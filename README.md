@@ -85,9 +85,6 @@ Since the cable is not available, we solder the cable with copper pins.
 We can use uart with/without pio. The code we edited is shown [here](https://github.com/MaxMa6150/finalproject.demo/tree/main/References%20(Uart%20connection)). We finally used PIO module in UART communication in our outlast design. In final design, QT PY 2040 will send data to Pico4ML when users select a specific mode, launchpad mode or sequencer mode, and the related information will be displayed on Pico4ML LCD. UART communication is also impleted in sequencer mode. The detailed explaination will be shown in Stage 3.
 
 
-
-
-
 ## Stage 2 4-step drumer
 Stage 2 demo is shown below:
 
@@ -140,7 +137,7 @@ In the original code, to make the drums to play at the same time, we use a mixer
                 trellis.set_callback(x,y,blink2)
         B = True
 ```
-to make the user to choose which mode they would like to play, we use a simple python input to realize that function. 
+To make the user to choose which mode they would like to play, we use a simple python input to realize that function. In this way, the user could choose the mode they want to play by interacting with console.
 
 Then we made a number of light function which will produce different light effect when the button is pressed:
 ```
@@ -221,7 +218,7 @@ def rainbow(x,y,color):
         trellis.color(a,7-a,OFF)
 
 ```
-light4
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_4.gif?raw=true)
 
 
 ```
@@ -248,7 +245,7 @@ def block(x,y,color):
         for x in range(8):
             trellis.color(x,y,OFF)
 ```
-light3
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_3.gif?raw=true)
 ```
 def waterx(x,y,color):
     for x in range(8):
@@ -292,7 +289,7 @@ def watery(x,y,color):
         trellis.color(6,y,OFF)
         trellis.color(7,y,OFF)
 ```
-light1
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_1.gif?raw=true)
 ```
 def bigcross(x,y,color):
     for a in range(8):
@@ -407,7 +404,7 @@ def love(x,y,color):
     trellis.color(5+a,4+b,OFF)
     trellis.color(0+a,1+b,OFF)
 ```
-light2
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_2.gif?raw=true)
 ```
 def loveloop(x,y):
     i=0
