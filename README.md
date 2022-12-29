@@ -15,10 +15,36 @@ We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com
 
 # project development
 At first as we designed in proposal, we would like to design real time music game that will covert the analog sound signal to pitches and showing LED light on different pitches through FFT(Fast Fourier Transform). However, after talking with Professor Dalton, he recommanded us to use Adafruit Neotrellis to accomplish the goal,and we found a lot of interesting application on the Neotrellis,and we finally decided to make a real instrucment, a "launchpad", instead of a music game hardware based machine. 
-For the first stage of design ,we use a 4x4 Neotrellis board to make a Whack a Mole game on it 
+For the first stage of design ,we use a 4x4 Neotrellis board to make a Whack a Mole game on it
 
-# Trouble shooting
+# Stage 1 Whack a Mole
+# Stage 2 4-step drumer
+# Stage 3 8x8 8-Step drumer(wave file mix play)
+# Stage 4 8x8 Launchpad with color functions (the color function will take up the I2C bus to make it non interactive when the Light is playing 
+
 # Reflections Pros/cons
+RP2040 pros:
+circuit python, large storage, RT and TX supported for board commmunciation
+cons:
+uncomplished python libary which didnot include audioio to play audio, low default I2C frequency
+
+PICO4ML:
+Pros:LCD display
+Cons:
+
+Neotrellis:
+Pros: Easy to use and program, silicon button embedded with Neopixel LEDs
+Cons: Since the Neopixel leds on the board can only be assesed one at a time with circuitpython, the delay of the LED light show is significant, and even more obvious when the audio is playing with the light functions. 
+
+4ohm 3w Speaker
+Pros: sensitive and high quality sound supported,and easy to drive with the AMPs
+Cons: Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. 
+
+
+
+
+
+
 # Feature accomplisments
 # PIO explaination
 # 
