@@ -1,16 +1,35 @@
 # final_project
+
 # project showcase
+
 # project instruction
 
-1. Circuit Diagram
+For this project, we mainly use four components:
+1. QTPY 2040 for main controlling (controlling speaker, receiving users' press/release feedback from Neotrellis, sending data to Pico4ML for LCD display)
+![80ab10b70a9447a0f1a1582951cff5e](https://user-images.githubusercontent.com/114200453/205554661-9bcd5967-a685-4f00-b26a-81e221a2b419.jpg)
+2. Neotrellis Keypad for user interaction
+![7488a3e7cad00aaf71475441a50a5d3](https://user-images.githubusercontent.com/114200453/205554711-53b2792c-b613-4fd8-928a-2f4bef98ae39.jpg)
+3. Pico4ML (communicating with QTPY 2040 with UART, receiving user feedback and displaying current stage on LCD)
+![e67e6e920a570e3ee0892871c5ad916](https://user-images.githubusercontent.com/114200453/205554769-cc1fe12c-257b-42be-95f1-6ad6bd800a8f.jpg)
+4. Speaker for .wav/.mps music playing
+![87bade31b6854a461e84a0713d36958](https://user-images.githubusercontent.com/114200453/209963773-e5f2d20b-5e1b-4e8b-8ba1-9d69e359d704.png)
 
-3. Software
+System diagram:
+![be46a745f1526035cd1deeb1c4a80b3](https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png)
+
+## Circuit Diagram
+
+
+## Software
 
 This program is mainly written with C and circuitpython, where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad which is loaded onthe qtpy rp2040.
 
-3. Soldering and case assambling 
+## Soldering and case assambling 
 
 We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis/tiling).
+
+## Low-pass filter assambling detail
+
 
 
 # project development
@@ -36,7 +55,7 @@ For the first stage of design ,we use a 4x4 Neotrellis board to make a Whack a M
 
 ## Components:
 QT PY 2040:
-![80ab10b70a9447a0f1a1582951cff5e](https://user-images.githubusercontent.com/114200453/205554661-9bcd5967-a685-4f00-b26a-81e221a2b419.jpg)
+
 Neotrellis keypad
 ![7488a3e7cad00aaf71475441a50a5d3](https://user-images.githubusercontent.com/114200453/205554711-53b2792c-b613-4fd8-928a-2f4bef98ae39.jpg)
 Pico4ML:
