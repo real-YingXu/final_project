@@ -17,7 +17,7 @@ For this project, we mainly use four components:
 System diagram:
 ![be46a745f1526035cd1deeb1c4a80b3](https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png)
 
-## Circuit Diagram
+## Circuit Diagram/Building
 
 
 ## Software
@@ -26,7 +26,9 @@ This program is mainly written with C and circuitpython, where C is controlling 
 
 ## Soldering and case assambling 
 
-We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis/tiling).
+We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis/tiling). All components shown in circuit building section are placed at the back of adafruit Neotrellis case.
+![0a6b3f3f711cae549443b092d9360e1](https://user-images.githubusercontent.com/114200453/209964686-498c02bd-e179-4ea4-bb4c-3595ccf0aff3.jpg)
+
 
 ## Low-pass filter assambling detail
 
