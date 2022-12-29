@@ -2,6 +2,7 @@
 
 # project showcase
 
+
 # project instruction
 
 For this project, we mainly use four components:
@@ -22,7 +23,7 @@ System diagram:
 
 ## Software
 
-This program is mainly written with C and circuitpython, where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad which is loaded onthe qtpy rp2040.
+This program is mainly written with C and circuitpython, where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad (receiving users' pressing data and controlling speaker) which is loaded on the qtpy rp2040. The detailed explaination of code will be shown in the next section.
 
 ## Soldering and case assambling 
 
