@@ -19,14 +19,6 @@ System diagram:
 ![be46a745f1526035cd1deeb1c4a80b3](https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png)
 
 ## Circuit Diagram/Building
-QT PY 2040:
-
-Neotrellis keypad
-![7488a3e7cad00aaf71475441a50a5d3](https://user-images.githubusercontent.com/114200453/205554711-53b2792c-b613-4fd8-928a-2f4bef98ae39.jpg)
-Pico4ML:
-![e67e6e920a570e3ee0892871c5ad916](https://user-images.githubusercontent.com/114200453/205554769-cc1fe12c-257b-42be-95f1-6ad6bd800a8f.jpg)
-Stemma Speaker:
-![2c44309be171846018c9e0021a1df9c](https://user-images.githubusercontent.com/114200453/205554787-44aea21a-ab14-4ae4-9037-837f4ea5dcaf.jpg)
 
 
 ## Software
@@ -69,14 +61,6 @@ we will show the credits on LCD screen which will read the data from RP2040 thro
 
 Later, we will use the LCD display to record the score of Whack a Mole and display the patterns in the 4 steps drumer. The connection between Pico4ML with LCD and QT PY 2040 is needed.
 
-## Pico4ML and PY2040 connection:
-
-Inspired by anothering group in demo day, we find out that Pico4ML with LCD display will be connected with QT PY 2040 with UART with Tx/RX port. The design diagram is shown below:
-
-![a33de4dd40d9f26efe16ebe6f541f0e](https://user-images.githubusercontent.com/114200453/205554246-17c9fd91-0dd5-495f-bbae-505ebc2ae730.jpg)
-
-We can use uart with/without pio. The code we will potentially edit is shown [here](https://github.com/MaxMa6150/finalproject.demo/tree/main/References%20(Uart%20connection)).
-
 ### code
 
 The code for the code for whack-a-mole mode is in first half of [code.py](https://github.com/MaxMa6150/finalproject.demo/blob/main/code.py).
@@ -88,14 +72,14 @@ The code for the code for whack-a-mole mode is in first half of [code.py](https:
 
 ### troubleshooting
 
-We use the  [neotrellis.simpletest.py](https://github.com/adafruit/Adafruit_CircuitPython_NeoTrellis/blob/main/examples/neotrellis_simpletest.py) 
+1. We use the  [neotrellis_simpletest.py](https://github.com/adafruit/Adafruit_CircuitPython_NeoTrellis/blob/main/examples/neotrellis_simpletest.py) 
 Since the cable is not available, we solder the cable with copper pins. 
 ![1551d4fc2dba9cf7454fcc54bca023e](https://user-images.githubusercontent.com/113209201/205519974-c958b217-2fb5-4a26-ac36-9b393b230299.jpg)
 
-
-
+2. Inspired by anothering group in demo day, we figured out that Pico4ML with LCD display could be connected with QT PY 2040 with UART with Tx/RX port. The basic logic is: when QT PY 2040 receive the users action, it can transport data to Pico4ML by TX writing port. By receiving data from RX port, Pico4ML could display some information on LCD screen with the library/code explained above. The design and system diagram is shown below:
+![a33de4dd40d9f26efe16ebe6f541f0e](https://user-images.githubusercontent.com/114200453/205554246-17c9fd91-0dd5-495f-bbae-505ebc2ae730.jpg)
 ![4952cf835d45d4de3d077f0bec4ef9a](https://user-images.githubusercontent.com/113209201/205527555-4c39911b-fb37-4d23-89e1-d4f304852c9b.jpg)
-We will use PIO in pico4ml to rp2040. 
+We can use uart with/without pio. The code we edited is shown [here](https://github.com/MaxMa6150/finalproject.demo/tree/main/References%20(Uart%20connection)). We finally used PIO module in UART communication in our outlast design. In final design, QT PY 2040 will send data to Pico4ML when users select a specific mode, launchpad mode or sequencer mode, and the related information will be displayed on Pico4ML LCD. UART communication is also impleted in sequencer mode. The detailed explaination will be shown in Stage 3.
 
 
 
@@ -118,33 +102,22 @@ The drums are assigned with different color, and each button on y axis represent
 
 The code for the code for 4-step drumer mode is in second half of [code.py](https://github.com/MaxMa6150/finalproject.demo/blob/main/code.py).
 
-### Design
-
-![636b7ca723a340c71f5bbcdf99d054b](https://user-images.githubusercontent.com/114200453/205553680-971f081e-1312-4f0b-a658-c0102464a50a.jpg)
-
-
-
-
-![4952cf835d45d4de3d077f0bec4ef9a](https://user-images.githubusercontent.com/113209201/205527600-5bcd38d2-2480-4058-9eba-8b182687626f.jpg)
-
-
-
-
 
 
 
 ### trouble shooting:
 
-1. the original code we used have the audioio module which didn't implement on qtpy2040, so we use audiopwmio instead and it has a lower resolution of audio out. In the next step, we will use a I2S drived audio AMP to drive the speaker. The new board MAX98357A has its own I2S module to play digital music file with higher resolution, then we can add more instrument file for lauchpad music playing mode. The new design is shown below:
-
-![37ef09f08b88d881d7e9ab135455026](https://user-images.githubusercontent.com/114200453/205553995-0a5854b5-1a4b-4630-9eff-6a9f49ceb76e.jpg)
+1. the original code we used have the audioio module which didn't implement on qtpy2040, so we use audiopwmio instead and it has a lower resolution of audio out.
 
 ## Stage 3 8x8 8-Step drumer
 After we get used to Neotrellis 4x4, we decided to solider four board to make it a 8x8 board, and we will realize a 8 step drumer on that with sample plaing. 
 
 ###Touble shooting
 In the original code, to make the drums to play at the same time, we use a mixer to play music in different channels. However, the sound samples in mixer are strictly required which means 
-## Stage 4 8x8 Launchpad with color functions (the color function will take up the I2C bus to make it non interactive when the Light is playing 
+
+
+## Stage 4 8x8 Launchpad with color functions
+```
     A = False
     B = False
 
@@ -161,8 +134,11 @@ In the original code, to make the drums to play at the same time, we use a mixer
             for x in range(8):
                 trellis.set_callback(x,y,blink2)
         B = True
+```
 to make the user to choose which mode they would like to play, we use a simple python input to realize that function. 
+
 Then we made a number of light function which will produce different light effect when the button is pressed:
+```
         def cross(x,y,color):
             trellis.color(x,y,color)
             trellis.color(x,y,OFF)
@@ -227,10 +203,10 @@ Then we made a number of light function which will produce different light effec
                 trellis.color(x,y-1,OFF)
                 trellis.color(x+1,y,OFF)
                 trellis.color(x-1,y,OFF)
-
+```
   
 
-
+```
         def rainbow(x,y,color):
             for a in range(8):
                 trellis.color(a,a,colorwheel(4*a*a))
@@ -239,11 +215,11 @@ Then we made a number of light function which will produce different light effec
                 trellis.color(a,a,OFF)
                 trellis.color(a,7-a,OFF)
 
+```
 
 
 
-
-
+```
 
         def block(x,y,color):
             if x in range(4) and y in range(4):
@@ -266,7 +242,8 @@ Then we made a number of light function which will produce different light effec
             for y in range(8):
                 for x in range(8):
                     trellis.color(x,y,OFF)
-
+```
+```
         def waterx(x,y,color):
             for x in range(8):
                 trellis.color(x,0,color)
@@ -287,7 +264,8 @@ Then we made a number of light function which will produce different light effec
                 trellis.color(x,5,OFF)
                 trellis.color(x,6,OFF)
                 trellis.color(x,7,OFF)
-
+```
+```
         def watery(x,y,color):
             for y in range(8):
                 trellis.color(0,y,color)
@@ -308,7 +286,8 @@ Then we made a number of light function which will produce different light effec
                 trellis.color(5,y,OFF)
                 trellis.color(6,y,OFF)
                 trellis.color(7,y,OFF)
-
+```
+```
         def bigcross(x,y,color):
             for a in range(8):
                 trellis.color(x,a,color)
@@ -323,7 +302,8 @@ Then we made a number of light function which will produce different light effec
 
             for b in range(8):
                 trellis.color(b,y,OFF)
-
+```
+```
 
 
         def spin_new(x,y,color):
@@ -347,7 +327,8 @@ Then we made a number of light function which will produce different light effec
             else:
                 watery(x,y,color)
 
-
+```
+```
 
         def spin(x,y,color):
             a = 1
@@ -377,7 +358,8 @@ Then we made a number of light function which will produce different light effec
                 a += 1
                 b *= -1
             trellis.color(x,y,OFF)
-
+```
+```
 
 
         def love(x,y,color):
@@ -416,7 +398,8 @@ Then we made a number of light function which will produce different light effec
             trellis.color(4+a,5+b,OFF)
             trellis.color(5+a,4+b,OFF)
             trellis.color(0+a,1+b,OFF)
-
+```
+```
         def loveloop(x,y):
             i=0
             while True:
@@ -458,7 +441,8 @@ Then we made a number of light function which will produce different light effec
                         trellis.color(0,1,colorwheel(i))
                         i -= 1
 
-
+```
+```
 
         def cloud(x,y,color):
             for y in range(8):
@@ -467,7 +451,8 @@ Then we made a number of light function which will produce different light effec
             for y in range(8):
                 for x in range(8):
                     trellis.color(x,y,OFF)
-
+```
+```
 
         def cloud_edit(x,y,color):
             i = 32
