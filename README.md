@@ -306,7 +306,7 @@ def bigcross(x,y,color):
     for b in range(8):
         trellis.color(b,y,OFF)
 ```
-light6
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_6.gif?raw=true)
 
 ```
 
@@ -339,7 +339,8 @@ def spin(x,y,color):
         b *= -1
     trellis.color(x,y,OFF)
 ```
-light5
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_5.gif?raw=true)
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_5_2.gif?raw=true)
 ```
 
 
