@@ -10,7 +10,7 @@ This program is mainly written with C and circuitpython, where C is controlling 
 
 3. Soldering and case assambling 
 
-We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis?gclid=EAIaIQobChMI9pjAnPKe_AIViBTUAR1t0wKbEAAYASAAEgI4IPD_BwE).
+We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis/tiling).
 
 
 # project development
