@@ -307,31 +307,7 @@ def bigcross(x,y,color):
         trellis.color(b,y,OFF)
 ```
 light6
-```
 
-
-def spin_new(x,y,color):
-    if x<2 or y<2 or x>5 or y>5:
-
-        for a in range(8):
-            trellis.color(x,a,color)
-            trellis.color(7-x,7-a,color)
-
-        for b in range(8):
-            trellis.color(b,y,color)
-            trellis.color(7-b,7-y,color)
-
-        for a in range(8):
-            trellis.color(x,a,OFF)
-            trellis.color(7-x,7-a,OFF)
-
-        for b in range(8):
-            trellis.color(b,y,OFF)
-            trellis.color(7-b,7-y,OFF)
-    else:
-        watery(x,y,color)
-
-```
 ```
 
 def spin(x,y,color):
