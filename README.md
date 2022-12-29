@@ -40,7 +40,10 @@ At first as we designed in proposal, we would like to design real time music gam
 For the first stage of design ,we use a 4x4 Neotrellis board to make a Whack a Mole game on it
 
 ## Stage 1 Whack a Mole
+Stage1 demo is shown below: 
+
 https://youtu.be/9epRLCVayiY
+
 The hole was randomly generated:
 ![0e44561f16b1917239642e189afe396](https://user-images.githubusercontent.com/113209201/205417980-ccd6b806-9c1c-4ca9-b883-0b86a4d445ff.jpg)
 
@@ -86,6 +89,8 @@ We can use uart with/without pio. The code we edited is shown [here](https://git
 
 
 ## Stage 2 4-step drumer
+Stage 2 demo is shown below:
+
 https://youtu.be/yeAbvyMj_us
 
 The 4 steps sequencer:
