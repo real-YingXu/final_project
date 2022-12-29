@@ -3,11 +3,14 @@
 # project instruction
 
 1. Circuit Diagram
-2. software 
-This program is mainly written with C and circuitpython, where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad which is loaded onthe qtpy rp2040.
-3. Soldering and case assambling 
-We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis?gclid=EAIaIQobChMI9pjAnPKe_AIViBTUAR1t0wKbEAAYASAAEgI4IPD_BwE).
 
+3. Software
+
+This program is mainly written with C and circuitpython, where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad which is loaded onthe qtpy rp2040.
+
+3. Soldering and case assambling 
+
+We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis?gclid=EAIaIQobChMI9pjAnPKe_AIViBTUAR1t0wKbEAAYASAAEgI4IPD_BwE).
 
 
 # project development
