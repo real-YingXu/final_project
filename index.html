@@ -1,0 +1,1413 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Untitled</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="57bec30b-6729-4daa-92c1-c1d32f84336f" class="page sans"><header><h1 class="page-title"></h1></header><div class="page-body"><figure id="a5524bb3-ef27-4996-8df6-21ed6eee70b9" class="image"><a href="https://user-images.githubusercontent.com/114256663/210098907-8da77f28-9226-45dd-aa62-da8cf9f5d98b.png"><img src="https://user-images.githubusercontent.com/114256663/210098907-8da77f28-9226-45dd-aa62-da8cf9f5d98b.png"/></a></figure><nav id="a8144b93-dfc2-419c-97a5-9aa5b738f04b" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d534e06c-073f-42f0-ab87-3d1066c6124f"><mark class="highlight-teal">Team overview</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c4a6faec-5902-4cd9-9bef-e80694040a3a"><mark class="highlight-teal">Project showcase</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9060091c-8321-49e7-80b4-69fd482a2d4a"><mark class="highlight-brown">Lunchpad mode</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#322541ed-b337-4e84-b276-47adf6a78c35"><mark class="highlight-brown">Sequencer mode</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c61bf80c-2f1e-4a7f-aae3-7a0ae196b8fb"><mark class="highlight-teal">Project instruction</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5dc852d0-8ca9-4a19-b43a-30a96851c429"><mark class="highlight-brown">Component</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#56c350d7-2b09-4b89-9f48-c924973af0b1"><mark class="highlight-brown">System diagram</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#48d0c156-b9ce-4ddc-854c-5bc8c87e3c4d"><mark class="highlight-brown">Circuit Diagram/Building</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ceca956a-7487-4824-a39d-e7dc34f68d05"><mark class="highlight-brown">Software</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d8ac0f23-3e2e-4030-bcb5-52c26b792401">Development environment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#71effcf7-3376-4911-86fd-19743bb779e0"><mark class="highlight-brown">Soldering and case assambling</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#05fb613f-3146-48c5-b8af-b4a294b476ec"><mark class="highlight-brown">Low-pass filter assambling detail</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#96ea5736-7f98-4bc4-be0b-1a7e55c18cf6"><mark class="highlight-teal">Project development</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08bbf225-d231-40ee-baf5-c58aa219ed19"><mark class="highlight-brown">Stage 1 Whack a Mole</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fa04f2a1-11f0-408f-abfd-a83a0bf596af">Code</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cec3b422-07d0-4645-a60e-d91f864815b4">Design</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3084359f-d98b-4cd2-b63a-70e7dd8fe72a">LCD on Pico4ML display:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a1a74bb8-06b8-473e-9dad-3b9807f268f8">Troubleshooting</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21d40a58-3ec7-4066-a680-faf5cad4d5f8"><mark class="highlight-brown">Stage 2 4-step drumer</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#133a012b-9b95-4f35-bd0c-a4636487cf60">Code</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#19b7906a-8cfa-4f3e-ae50-84bdd6509a21">Trouble shooting:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7d34de6c-729f-46e7-bafa-dfe18018ae60"><mark class="highlight-brown">Stage 3 8x8 8-Step drumer</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1e331f56-d4a4-46ad-ac04-d9ef40f454ed">Touble shooting</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fb3d254d-5b34-4809-82d0-1d18deeed590"><mark class="highlight-brown">Stage 4 8x8 Launchpad with color functions</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#351de568-7b4c-4cb8-97d9-1d104793e23e">Trouble shooting</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#99de1ccb-193c-4439-8550-fd0c4b62d81e"><mark class="highlight-brown">PIO used for UART communication</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#57a5c810-9318-4547-99ca-786308364775">Introduction to the RP2040 PIO module</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7aba7735-9b81-4768-9793-e915fae9b2c3"><mark class="highlight-brown">Development process</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f5fa548e-d0eb-41da-8f18-c7008891e2ed">Stage 1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d640101a-cb8c-4cd8-9633-82e8661ef9fb">Stage 2</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e48cfe87-1644-43db-84c4-06ac8125494c">Stage 3</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3c8d7c89-28ed-4ed0-a522-f482f523d2c8"><mark class="highlight-brown">Final stage</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3d57634f-a356-48d8-a24c-44c42b42dce1">Trouble shooting:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#54d8e6cb-a22e-4821-8d8f-b1e503605ecc"><mark class="highlight-teal">Reflections Pros/cons</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#792d1d91-fd23-4c6d-90ee-28a6f2fd34b2"><mark class="highlight-teal">Future improvements:</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#decdd65c-2862-4d10-8f4f-c0579d49030c"><mark class="highlight-teal">Feature accomplisments</mark></a></div></nav><h1 id="d534e06c-073f-42f0-ab87-3d1066c6124f" class=""><mark class="highlight-teal">Team overview</mark></h1><pre id="16318531-7ed7-43cc-af33-834dde7cc73f" class="code code-wrap"><code>Sizhe Ma: https://github.com/MaxMa6150
+
+Sudong Wang: https://github.com/sudong-wang
+
+Ying Xu: https://github.com/real-YingXu</code></pre><figure id="830076ae-e4e8-45f0-9d9c-0a3cbe1b0028" class="image"><a href="https://user-images.githubusercontent.com/114200453/210052888-22603b10-9648-4263-ac01-44d61f10eff6.jpg"><img src="https://user-images.githubusercontent.com/114200453/210052888-22603b10-9648-4263-ac01-44d61f10eff6.jpg"/></a></figure><h1 id="c4a6faec-5902-4cd9-9bef-e80694040a3a" class=""><mark class="highlight-teal">Project showcase</mark></h1><p id="95cc8eee-5163-47b0-85e6-37bd6d84dcfd" class="">In this project,we made a launchpad with a sequencer that can loop drum beat. At starter, the launchpad will start with a black screen on the LCD display, then the four drum set will played along with the lcd display shows “launch” “pad” “music” “game” with the same color as the drum set color. Then the user will be asked to choose to play sequencer mode(1) or launchpad mode(2).</p><h2 id="9060091c-8321-49e7-80b4-69fd482a2d4a" class=""><mark class="highlight-brown">Lunchpad mode</mark></h2><p id="8ec78297-4bc6-4008-912e-553fd9f5f742" class="">When the user pressed the button in the right sequence, the music will play with the lights to play a full song with cool effects. Each 4 keys on the keypad represent the same music file. So if the users press the block in order, a whole song could be played by the speaker.</p><p id="1479d808-66e8-4ede-9210-4622b0f82958" class="">The demo of launchpad mode is shown in <a href="https://drive.google.com/drive/folders/14ZOfYKHZ7gTeN6y0t-aUhNkz1XuKzZ9G">mode_launchpad.mp4</a> video file.</p><h2 id="322541ed-b337-4e84-b276-47adf6a78c35" class=""><mark class="highlight-brown">Sequencer mode</mark></h2><p id="f8ca18f6-8d06-4870-b415-0214d0d1ed07" class="">The user can proudce a 8 step drum beat with four drum sounds proceeding with the sample playing. The user can real time modify the drum beat by assemble different drum beat to the differet second of two period of 4/4 music intervel. When the pressed key(instrument) is played by the speaker, the LCD screen will refresh and show the current drum beat(‘o’ means no instrument is played, x means there is a playing instrument). By pressing the a yellow button in row 5, the sample will play in the fifth channel of the mixer along with the 8 step drumer.</p><p id="5def27c5-c708-487f-ae25-153961b2f48b" class="">The demo of Sequencer/Drum mode is shown in <a href="https://drive.google.com/drive/folders/14ZOfYKHZ7gTeN6y0t-aUhNkz1XuKzZ9G">mode_sequencer.mp4</a> and <a href="https://drive.google.com/drive/folders/14ZOfYKHZ7gTeN6y0t-aUhNkz1XuKzZ9G">sequencer_LCD.mp4</a> video files.</p><h1 id="c61bf80c-2f1e-4a7f-aae3-7a0ae196b8fb" class=""><mark class="highlight-teal">Project instruction</mark></h1><h2 id="5dc852d0-8ca9-4a19-b43a-30a96851c429" class=""><mark class="highlight-brown">Component</mark></h2><p id="90c796b4-5012-4699-8871-7fb52dca4ca6" class="">For this project, we mainly use four components: 1. QTPY 2040 for main controlling (controlling speaker, receiving users’ press/release feedback from Neotrellis, sending data to Pico4ML for LCD display)</p><figure id="34157631-3908-4a09-9f79-f32afff34145" class="image"><a href="https://user-images.githubusercontent.com/114200453/205554661-9bcd5967-a685-4f00-b26a-81e221a2b419.jpg"><img src="https://user-images.githubusercontent.com/114200453/205554661-9bcd5967-a685-4f00-b26a-81e221a2b419.jpg"/></a></figure><p id="e7bb76a1-bff0-4b5a-acab-3bd240d890b3" class="">2. Neotrellis Keypad for user interaction</p><figure id="d508c799-223d-45bb-ae5f-5c75dd531e91" class="image"><a href="https://user-images.githubusercontent.com/114200453/205554711-53b2792c-b613-4fd8-928a-2f4bef98ae39.jpg"><img src="https://user-images.githubusercontent.com/114200453/205554711-53b2792c-b613-4fd8-928a-2f4bef98ae39.jpg"/></a></figure><p id="fb10f30c-4bbc-486d-beb9-6de265f62169" class="">3. Pico4ML (communicating with QTPY 2040 with UART, receiving user feedback and displaying current stage on LCD)</p><figure id="37f77eb4-c282-4c7d-84bb-db2bc72b2e29" class="image"><a href="https://user-images.githubusercontent.com/114200453/205554769-cc1fe12c-257b-42be-95f1-6ad6bd800a8f.jpg"><img src="https://user-images.githubusercontent.com/114200453/205554769-cc1fe12c-257b-42be-95f1-6ad6bd800a8f.jpg"/></a></figure><p id="8c5b662e-300d-4d3e-af39-218528ce83a6" class="">4. Speaker for .wav/.mps music playing</p><figure id="98dcbb9d-9515-42df-9007-a8c243bc950f" class="image"><a href="https://user-images.githubusercontent.com/114200453/209963773-e5f2d20b-5e1b-4e8b-8ba1-9d69e359d704.png"><img src="https://user-images.githubusercontent.com/114200453/209963773-e5f2d20b-5e1b-4e8b-8ba1-9d69e359d704.png"/></a></figure><h2 id="56c350d7-2b09-4b89-9f48-c924973af0b1" class=""><mark class="highlight-brown">System diagram</mark></h2><figure id="8663cd6d-2e4d-4c75-8baf-e2a151f727b6" class="image"><a href="https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png"><img src="https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png"/></a></figure><p id="c18fe77d-a039-4a17-b1d8-597c6e877aab" class="">be46a745f1526035cd1deeb1c4a80b3</p><h2 id="48d0c156-b9ce-4ddc-854c-5bc8c87e3c4d" class=""><mark class="highlight-brown">Circuit Diagram/Building</mark></h2><p id="d72c469d-167d-469b-aae4-eb818e1b9a98" class="">The circuit diagram:</p><figure id="347f1461-c279-451d-989d-a7f25922f40b" class="image"><a href="https://user-images.githubusercontent.com/114200453/210054570-08d89f0a-304e-46a3-961f-f0af5e2d8897.jpg"><img src="https://user-images.githubusercontent.com/114200453/210054570-08d89f0a-304e-46a3-961f-f0af5e2d8897.jpg"/></a></figure><p id="3fc3385a-c385-484b-a28c-bc06f63b6414" class="">We firstly assembled all components, which includes Pico4ML, QTPY 2040, Stemma Speaker driver, 4 ohm 3W speaker, low-pass filter composed by 330 ohm resistor and 10pF capacitor, 3.3uF capacitor for short circuit protection, and variable resistor for volume controlling, on the breadboard and tested the functionality:</p><figure id="c3b5ecfb-9365-448a-b824-a9612880f4c1" class="image"><a href="https://user-images.githubusercontent.com/114200453/210047345-1286b7ac-e561-413a-bc32-c845b1d60a0d.jpg"><img src="https://user-images.githubusercontent.com/114200453/210047345-1286b7ac-e561-413a-bc32-c845b1d60a0d.jpg"/></a></figure><p id="59579382-5723-4dfc-92c4-d9c0ba20a7d1" class="">The soldered circuit is shown below:</p><figure id="f592be26-ccec-45d1-81ab-4310d402d26f" class="image"><a href="https://user-images.githubusercontent.com/114200453/210046908-de51b672-6483-445e-8416-b3445e89330f.jpg"><img src="https://user-images.githubusercontent.com/114200453/210046908-de51b672-6483-445e-8416-b3445e89330f.jpg"/></a></figure><h2 id="ceca956a-7487-4824-a39d-e7dc34f68d05" class=""><mark class="highlight-brown">Software</mark></h2><p id="534db252-ebd2-47c2-9108-2a5ecb722e4a" class="">This program is mainly written with <a href="https://github.com/MaxMa6150/final_project/blob/main/UART%26LCD/rxtx.c">C</a> and <a href="https://github.com/MaxMa6150/final_project/blob/main/code.py">circuitpython</a>, where C is controlling the UART communication between the PICO4ML and qtpy rp2040 then displaying the related information on LCD screen, and the circuit python realized the functionality of the launchpad (receiving users’ pressing data and controlling speaker) which is loaded on the qtpy rp2040. The detailed explaination of code will be shown in the next section.</p><h3 id="d8ac0f23-3e2e-4030-bcb5-52c26b792401" class="">Development environment</h3><p id="e90e4ec6-8cb1-4175-a402-407f562190e1" class="">Visual Studio Code Version: 1.74.2</p><pre id="6b9ae063-b932-452f-9339-4f96fcffcb51" class="code code-wrap"><code>Tested on: Thinkpad X1, Windows 10 Pro, Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz   2.11 GHz</code></pre><p id="9995460f-6ed5-4c6f-b724-bb568e2aebc1" class="">MU circuitpython editor Version: 1.1.1</p><pre id="a83fc702-548b-4f56-9de7-ce7ea01e45ac" class="code code-wrap"><code>Tested on: DELL XPS13, Windows 10</code></pre><h2 id="71effcf7-3376-4911-86fd-19743bb779e0" class=""><mark class="highlight-brown">Soldering and case assambling</mark></h2><p id="47756719-730a-4f1c-8889-526266ece4f7" class="">We assambed all component in</p><p id="401e0fd8-773a-46eb-bf7f-550c6162b66d" class=""><a href="https://www.adafruit.com/product/4372">adafruit Neotrellis case</a></p><p id="50482616-a2c9-4bf7-b0d8-7c3d508ee5b1" class="">and we use four Neotrellis board</p><p id="4a46a2a1-8ef4-4dc1-ad37-1b1096a35d74" class=""><a href="https://learn.adafruit.com/adafruit-neotrellis/tiling">soldered together</a></p><p id="53a788ac-bc78-45fd-98e1-6c2cce36eab5" class="">All components shown in circuit building section are placed at the back of adafruit Neotrellis case.</p><figure id="0b37838d-79de-49dd-ae1c-cdfa045e33c1" class="image"><a href="https://user-images.githubusercontent.com/114200453/209964686-498c02bd-e179-4ea4-bb4c-3595ccf0aff3.jpg"><img src="https://user-images.githubusercontent.com/114200453/209964686-498c02bd-e179-4ea4-bb4c-3595ccf0aff3.jpg"/></a></figure><p id="084dbf5d-267c-464b-90a8-d47ebb0610cc" class="">first, set the case:</p><figure id="e47f4284-386b-4c14-958a-975664c58278" class="image"><a href="https://user-images.githubusercontent.com/53798758/210053326-4123ddd0-86c8-4dbb-937b-d0b5c9cf8013.jpg"><img src="https://user-images.githubusercontent.com/53798758/210053326-4123ddd0-86c8-4dbb-937b-d0b5c9cf8013.jpg"/></a></figure><p id="800974e5-c91b-40bb-b8c6-df7052060047" class="">then put the variable resistor into the hole to make it a volumn controller</p><figure id="1547370b-92d8-4adf-b294-dd5f01e11e31" class="image"><a href="https://user-images.githubusercontent.com/53798758/210053402-6e46b0f1-043f-46cf-b732-37f5367247a3.jpg"><img src="https://user-images.githubusercontent.com/53798758/210053402-6e46b0f1-043f-46cf-b732-37f5367247a3.jpg"/></a></figure><p id="64715e17-77db-4f9b-9ae7-12368087c27e" class="">lastly, assemble the case and you are good to go</p><figure id="fb771058-5f98-4b58-87e8-281037cb2af5" class="image"><a href="https://user-images.githubusercontent.com/53798758/210053517-e8e85e0b-3d68-4acf-b4f5-dcb580a78466.jpg"><img src="https://user-images.githubusercontent.com/53798758/210053517-e8e85e0b-3d68-4acf-b4f5-dcb580a78466.jpg"/></a></figure><figure id="e754fcd7-a3f3-44b5-b7d4-510955db2909" class="image"><a href="https://user-images.githubusercontent.com/53798758/210053533-5e743da0-1df1-4e20-88d3-77281cdf9622.jpg"><img src="https://user-images.githubusercontent.com/53798758/210053533-5e743da0-1df1-4e20-88d3-77281cdf9622.jpg"/></a></figure><h2 id="05fb613f-3146-48c5-b8af-b4a294b476ec" class=""><mark class="highlight-brown">Low-pass filter assambling detail</mark></h2><p id="d01134a2-f3a2-48d1-9402-3b9c535196c5" class="">Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. For the voltage divider, we used a variable resistor to do the job, and for the low pass filter we use a 10 pf capacitor and a 1k ohm resistor which will wave out the sound above 5k hz,and we also use a 3.3uf capacitor to reduce the short circuit noise produce when the switcher is on and off.</p><h1 id="96ea5736-7f98-4bc4-be0b-1a7e55c18cf6" class=""><mark class="highlight-teal">Project development</mark></h1><p id="a4dd1329-2948-4a87-9720-16a8ec6ffd0d" class="">At first as we designed in proposal, we would like to design real time music game that will covert the analog sound signal to pitches and showing LED light on different pitches through FFT(Fast Fourier Transform). However, after talking with Professor Dalton, he recommanded us to use Adafruit Neotrellis to accomplish the goal,and we found a lot of interesting application on the Neotrellis,and we finally decided to make a real instrucment, a “launchpad”, instead of a music game hardware based machine. For the first stage of design ,we use a 4x4 Neotrellis board to make a Whack a Mole game on it</p><h2 id="08bbf225-d231-40ee-baf5-c58aa219ed19" class=""><mark class="highlight-brown">Stage 1 Whack a Mole</mark></h2><p id="90f91d54-dfb6-4197-8429-0b239976945c" class="">Stage1 demo is shown below:</p><p id="0bd73fb2-3dd3-4020-9cf6-dfa4a7d5d2bd" class="">https://youtu.be/9epRLCVayiY</p><p id="6726ade6-8986-4da5-949f-9d7d5d41902e" class="">The hole was randomly generated:</p><figure id="e09f53db-69b8-4983-8c28-91c84f62e3c6" class="image"><a href="https://user-images.githubusercontent.com/113209201/205417980-ccd6b806-9c1c-4ca9-b883-0b86a4d445ff.jpg"><img src="https://user-images.githubusercontent.com/113209201/205417980-ccd6b806-9c1c-4ca9-b883-0b86a4d445ff.jpg"/></a></figure><p id="1ed6f9ed-5346-4330-af82-3dcc49c440a3" class="">If you hit it in time, it will show no light, or you may hit wrong which shows red light, and the rat will escape after 0.5 second.</p><figure id="3d4eb75c-c794-48bd-9026-b7ec788517a4" class="image"><a href="https://user-images.githubusercontent.com/113209201/205418051-4dfb38aa-c2ff-424c-bb64-eb0b75730781.jpg"><img src="https://user-images.githubusercontent.com/113209201/205418051-4dfb38aa-c2ff-424c-bb64-eb0b75730781.jpg"/></a></figure><p id="1e8c04c4-5576-4ea8-9543-2d9b1ad18987" class="">hit right gain +2, hit wrong gain -1, hit none gain 0 credits.</p><figure id="f21317d0-08c2-4440-875b-1359ef67aef6" class="image"><a href="https://user-images.githubusercontent.com/113209201/205418071-c22ed010-0436-4fa4-b551-a5c84b25396e.png"><img src="https://user-images.githubusercontent.com/113209201/205418071-c22ed010-0436-4fa4-b551-a5c84b25396e.png"/></a></figure><p id="5ff92dfd-14e1-4afc-ab5f-b134a5fe1a5f" class="">1591f55f30e0efb9959507cbaad0104</p><p id="3e82e50f-0c88-496a-b99f-5f47b6f43c4c" class="">after you got below 0 score, game over!</p><figure id="7bc707d3-3c8e-4096-a600-9c134fd2667a" class="image"><a href="https://user-images.githubusercontent.com/113209201/205418063-43d84f5d-1f88-475b-adac-9487aaf1e8e9.jpg"><img src="https://user-images.githubusercontent.com/113209201/205418063-43d84f5d-1f88-475b-adac-9487aaf1e8e9.jpg"/></a></figure><h3 id="fa04f2a1-11f0-408f-abfd-a83a0bf596af" class="">Code</h3><p id="0af1bdc1-127f-4ee6-a9fe-3f26d1dc6fea" class="">The code for the code for whack-a-mole mode is in first half of <a href="https://github.com/MaxMa6150/finalproject.demo/blob/main/code.py">code.py</a>.</p><h3 id="cec3b422-07d0-4645-a60e-d91f864815b4" class="">Design</h3><figure id="e2b3d5ad-fc57-4030-a04d-8744ab4065b3" class="image"><a href="https://user-images.githubusercontent.com/114200453/205553588-4998bc56-a30c-4892-9ede-2b20ec399142.jpg"><img src="https://user-images.githubusercontent.com/114200453/205553588-4998bc56-a30c-4892-9ede-2b20ec399142.jpg"/></a></figure><p id="fc4bb950-2fb7-4fe4-af41-7f06b9859fb2" class="">
+</p><h3 id="3084359f-d98b-4cd2-b63a-70e7dd8fe72a" class="">LCD on Pico4ML display:</h3><p id="fcdc1665-a3bb-4e36-8187-0a34d68b3329" class="">We will show the credits on LCD screen which will read the data from RP2040 through PIO in/out. The “hello-world” code for LCD enable is shown <a href="https://github.com/MaxMa6150/finalproject.demo/blob/main/hello_LCD.c">here</a>.</p><p id="a5c5309e-d863-44a5-b19b-78c687893fa1" class="">For LCD display, we basically use <code>LCD_st7735.c</code> with <code>void ST7735_Init(void);</code>, <code>void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, FontDef font, uint16_t color, uint16_t bgcolor);</code> and <code>void ST7735_FillScreen(uint16_t color);</code> functions. The header file is shown below:</p><pre id="fe1e944e-34db-4eae-a85f-645e63d77250" class="code code-wrap"><code>#ifndef __ST7735_H__
+#define __ST7735_H__
+
+#include &quot;fonts.h&quot;
+#include &lt;stdbool.h&gt;
+
+#define ST7735_MADCTL_MY 0x80
+#define ST7735_MADCTL_MX 0x40
+#define ST7735_MADCTL_MV 0x20
+#define ST7735_MADCTL_ML 0x10
+#define ST7735_MADCTL_RGB 0x00
+#define ST7735_MADCTL_BGR 0x08
+#define ST7735_MADCTL_MH 0x04
+#define ST7735_RES_Pin GPIO_PIN_7
+#define ST7735_RES_GPIO_Port GPIOC
+#define ST7735_CS_Pin GPIO_PIN_6
+#define ST7735_CS_GPIO_Port GPIOB
+#define ST7735_DC_Pin GPIO_PIN_9
+#define ST7735_DC_GPIO_Port GPIOA
+
+// mini 160x80 display (it&#x27;s unlikely you want the default orientation)
+
+#define ST7735_IS_160X80 1
+#define ST7735_XSTART 24
+#define ST7735_YSTART 0
+#define ST7735_WIDTH 80
+#define ST7735_HEIGHT 160
+//#define ST7735_ROTATION (ST7735_MADCTL_MX | ST7735_MADCTL_MY |
+//ST7735_MADCTL_BGR)
+#define ST7735_ROTATION (ST7735_MADCTL_BGR)
+
+// mini 160x80, rotate left
+/*
+#define ST7735_IS_160X80 1
+#define ST7735_XSTART 1
+#define ST7735_YSTART 26
+#define ST7735_WIDTH  160
+#define ST7735_HEIGHT 80
+#define ST7735_ROTATION (ST7735_MADCTL_MX | ST7735_MADCTL_MV |
+ST7735_MADCTL_BGR)
+*/
+
+// mini 160x80, rotate right
+/*
+#define ST7735_IS_160X80 1
+#define ST7735_XSTART 0
+#define ST7735_YSTART 24
+#define ST7735_WIDTH  160
+#define ST7735_HEIGHT 80
+#define ST7735_ROTATION (ST7735_MADCTL_MY | ST7735_MADCTL_MV |
+ST7735_MADCTL_BGR)
+*/
+/****************************/
+
+#define ST7735_NOP 0x00
+#define ST7735_SWRESET 0x01
+#define ST7735_RDDID 0x04
+#define ST7735_RDDST 0x09
+
+#define ST7735_SLPIN 0x10
+#define ST7735_SLPOUT 0x11
+#define ST7735_PTLON 0x12
+#define ST7735_NORON 0x13
+
+#define ST7735_INVOFF 0x20
+#define ST7735_INVON 0x21
+#define ST7735_DISPOFF 0x28
+#define ST7735_DISPON 0x29
+#define ST7735_CASET 0x2A
+#define ST7735_RASET 0x2B
+#define ST7735_RAMWR 0x2C
+#define ST7735_RAMRD 0x2E
+
+#define ST7735_PTLAR 0x30
+#define ST7735_COLMOD 0x3A
+#define ST7735_MADCTL 0x36
+
+#define ST7735_FRMCTR1 0xB1
+#define ST7735_FRMCTR2 0xB2
+#define ST7735_FRMCTR3 0xB3
+#define ST7735_INVCTR 0xB4
+#define ST7735_DISSET5 0xB6
+
+#define ST7735_PWCTR1 0xC0
+#define ST7735_PWCTR2 0xC1
+#define ST7735_PWCTR3 0xC2
+#define ST7735_PWCTR4 0xC3
+#define ST7735_PWCTR5 0xC4
+#define ST7735_VMCTR1 0xC5
+
+#define ST7735_RDID1 0xDA
+#define ST7735_RDID2 0xDB
+#define ST7735_RDID3 0xDC
+#define ST7735_RDID4 0xDD
+
+#define ST7735_PWCTR6 0xFC
+
+#define ST7735_GMCTRP1 0xE0
+#define ST7735_GMCTRN1 0xE1
+
+// Color definitions
+#define ST7735_BLACK 0x0000
+#define ST7735_BLUE 0x001F
+#define ST7735_RED 0xF800
+#define ST7735_GREEN 0x07E0
+#define ST7735_CYAN 0x07FF
+#define ST7735_MAGENTA 0xF81F
+#define ST7735_YELLOW 0xFFE0
+#define ST7735_WHITE 0xFFFF
+#define ST7735_COLOR565(r, g, b)                                               \
+  (((r &amp; 0xF8) &lt;&lt; 8) | ((g &amp; 0xFC) &lt;&lt; 3) | ((b &amp; 0xF8) &gt;&gt; 3))
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+// call before initializing any SPI devices
+void ST7735_Unselect();
+
+void ST7735_Init(void);
+void ST7735_DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, FontDef font,
+                        uint16_t color, uint16_t bgcolor);
+void ST7735_FillRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                          uint16_t color);
+void ST7735_FillScreen(uint16_t color);
+void ST7735_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+                      const uint8_t *data);
+void ST7735_InvertColors(bool invert);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // __ST7735_H_</code></pre><p id="a87e6e25-334f-4420-a6f4-4a887600f8c5" class="">Firstly, before we want any display on LCD, <code>void ST7735_Init(void);</code> is used to initialize the screen. <code>void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, FontDef font, uint16_t color, uint16_t bgcolor)</code> is used to write strings on LCD. We can easily display the strings <code>char *str</code> and define the strings’ location by setting <code>uint16_t x</code> and <code>uint16_t y</code>. Also, the strings’ color and the screen’s background color could be defined by <code>uint16_t color</code> and <code>uint16_t bgcolor</code>. Since the LCD could not actually “delate” previous strings, we can use <code>void ST7735_FillScreen(uint16_t color);</code> function to erase the previous display.</p><p id="c5195fe0-4f0f-4904-8f51-b38df085d1b4" class="">Also, <code>fonts.c</code> file has defined letters and symbols with different sizes: <code>Font7x10[]</code> and <code>Font11x18[]</code>, each number represents the pixel in x and y each letter occupies. The header file is shown below:</p><pre id="6db9b90c-53a4-4893-b204-14a105221e2a" class="code code-wrap"><code>/* vim: set ai et ts=4 sw=4: */
+#ifndef __FONTS_H__
+#define __FONTS_H__
+
+#include &lt;stdint.h&gt;
+
+typedef struct {
+  const uint8_t width;
+  uint8_t height;
+  const uint16_t *data;
+} FontDef;
+
+extern FontDef Font_7x10;
+extern FontDef Font_11x18;
+extern FontDef Font_16x26;
+extern const uint8_t arducam_logo[25608];
+extern const uint16_t IMU_ICM20948[3200];
+
+#endif // __FONTS_H__</code></pre><figure id="faddd216-da10-42eb-a5fd-24b78e5c4fc8" class="image"><a href="https://user-images.githubusercontent.com/113209201/205536461-e9dffa7d-6352-4bbb-873e-25df8729c929.gif"><img src="https://user-images.githubusercontent.com/113209201/205536461-e9dffa7d-6352-4bbb-873e-25df8729c929.gif"/></a></figure><p id="4b94d1de-c225-44c7-8bf6-2fd069346b1f" class="">
+</p><p id="61711fe4-cf1d-44b8-870d-401e5719e6e3" class="">Later, we will use the LCD display to give users relative information and display the patterns in the 4 steps drumer. The connection between Pico4ML with LCD and QT PY 2040 is needed.</p><h3 id="a1a74bb8-06b8-473e-9dad-3b9807f268f8" class="">Troubleshooting</h3><ol type="1" id="49dd163f-6c21-4b8c-9600-fbe486571a32" class="numbered-list" start="1"><li>We use the <a href="https://github.com/adafruit/Adafruit_CircuitPython_NeoTrellis/blob/main/examples/neotrellis_simpletest.py">neotrellis_simpletest.py</a> Since the cable is not available, we solder the cable with copper pins.<figure id="4fd23f30-7b06-45ae-b913-27ac1a72bcd3" class="image"><a href="https://user-images.githubusercontent.com/113209201/205519974-c958b217-2fb5-4a26-ac36-9b393b230299.jpg"><img src="https://user-images.githubusercontent.com/113209201/205519974-c958b217-2fb5-4a26-ac36-9b393b230299.jpg"/></a></figure></li></ol><ol type="1" id="886c40d6-0e20-46a1-824f-b9aa7e3035d8" class="numbered-list" start="2"><li>Inspired by anothering group in demo day, we figured out that Pico4ML with LCD display could be connected with QT PY 2040 with UART with Tx/RX port. The basic logic is: when QT PY 2040 receive the users action, it can transport data to Pico4ML by TX writing port. By receiving data from RX port, Pico4ML could display some information on LCD screen with the library/code explained above. The design and system diagram is shown below:   We can use uart with/without pio. The code we edited is shown <a href="https://github.com/MaxMa6150/finalproject.demo/tree/main/References%20(Uart%20connection)">here</a>. We finally used PIO module in UART communication in our outlast design. In final design, QT PY 2040 will send data to Pico4ML when users select a specific mode, launchpad mode or sequencer mode, and the related information will be displayed on Pico4ML LCD. UART communication is also impleted in sequencer mode. The detailed explaination will be shown in Stage 3.<figure id="8c3ecadb-c75c-4df2-b9d5-b443b4edda2d" class="image"><a href="https://user-images.githubusercontent.com/114200453/205554246-17c9fd91-0dd5-495f-bbae-505ebc2ae730.jpg"><img src="https://user-images.githubusercontent.com/114200453/205554246-17c9fd91-0dd5-495f-bbae-505ebc2ae730.jpg"/></a></figure><figure id="132941d1-eaf3-454e-a379-5fab83871c10" class="image"><a href="https://user-images.githubusercontent.com/113209201/205527555-4c39911b-fb37-4d23-89e1-d4f304852c9b.jpg"><img src="https://user-images.githubusercontent.com/113209201/205527555-4c39911b-fb37-4d23-89e1-d4f304852c9b.jpg"/></a></figure></li></ol><h2 id="21d40a58-3ec7-4066-a680-faf5cad4d5f8" class=""><mark class="highlight-brown">Stage 2 4-step drumer</mark></h2><p id="eedd4664-c85e-457d-ac36-c303d7e73529" class="">Stage 2 demo is shown below:</p><p id="1483afbc-ba06-4400-a7d1-1f0ef13d2f92" class="">https://youtu.be/yeAbvyMj_us</p><p id="c36fe350-be78-406e-96aa-221d3e16bcb4" class="">The 4 steps sequencer:</p><p id="311fdee0-61b2-4f75-89a9-26e5c01293c1" class="">we use 4/4 time signature.</p><figure id="b0be6bce-734a-49fa-95c2-687b250ffbdd" class="image"><a href="https://user-images.githubusercontent.com/113209201/205418094-1c88b3c4-5eb0-494a-baac-6569413cd4b1.jpg"><img src="https://user-images.githubusercontent.com/113209201/205418094-1c88b3c4-5eb0-494a-baac-6569413cd4b1.jpg"/></a></figure><p id="0d3631fe-44d3-43e4-aea6-5dc01032e8d5" class="">
+</p><p id="d48c91a6-424d-4a93-bb11-099485fd5915" class="">The drums are assigned with different color, and each button on y axis represents a quarter of a period. You can produce different combination of drums by pressing down those drum button and create drum beats.</p><figure id="e684a1a9-e8be-4549-819c-2bd6e7df3abd" class="image"><a href="https://user-images.githubusercontent.com/113209201/205418163-4cc14d23-2ab0-4c8f-b9df-3c60070a3c02.jpg"><img src="https://user-images.githubusercontent.com/113209201/205418163-4cc14d23-2ab0-4c8f-b9df-3c60070a3c02.jpg"/></a></figure><p id="22f7662a-0d22-4e54-a1b7-afc5459384b2" class="">
+</p><h3 id="133a012b-9b95-4f35-bd0c-a4636487cf60" class="">Code</h3><p id="5092cd92-b471-49d8-936a-865199fa2843" class="">The code for the code for 4-step drumer mode is in second half of <a href="https://github.com/MaxMa6150/finalproject.demo/blob/main/code.py">code.py</a>.</p><h3 id="19b7906a-8cfa-4f3e-ae50-84bdd6509a21" class="">Trouble shooting:</h3><ol type="1" id="7799be39-4b5b-4845-acb1-6db282618dbd" class="numbered-list" start="1"><li>the original code we used have the audioio module which didn’t implement on qtpy2040, so we use audiopwmio instead and it has a lower resolution of audio out.</li></ol><h2 id="7d34de6c-729f-46e7-bafa-dfe18018ae60" class=""><mark class="highlight-brown">Stage 3 8x8 8-Step drumer</mark></h2><p id="fcbac6a8-b8f5-4fe6-b347-57fbf2e66a2a" class="">After we get used to Neotrellis 4x4, we decided to solider four board to make it a 8x8 board, and we will realize a 8 step drumer on that with sample plaing. ### code</p><pre id="ed1a6d0a-9278-4171-8360-9bcfcca099da" class="code code-wrap"><code>        for v in range(4):
+            uart.write(bytes([BIT1[v]]))
+            trellis.color(0,v,DRUM_COLOR[v])
+            wave_file = open(DRUM[v], &quot;rb&quot;)
+            # OK we managed to open the wave OK
+            for x in range(1,4):
+                trellis.color(x,v,DRUM_COLOR[v])
+            sample = audiocore.WaveFile(wave_file)
+            # debug play back on load!
+            mixer.play(sample, voice=0)
+            for x in range(4, 8):
+                trellis.color(x, v,DRUM_COLOR[v])
+            while mixer.playing:
+                pass
+            #trellis.color(7,v,DRUM_COLOR[v])
+
+            time.sleep(0.3)
+            samples.append(sample)</code></pre><p id="ce645bab-64c3-48eb-9599-2d00cafa3fc1" class="">Read the 4 wave files, convert to stereo samples, and store (show load status on neopixels and play audio once loaded too!)</p><p id="78fbdbe5-0df6-4d0b-b6df-7707b54bad7b" class="">define the global state</p><pre id="7b5cbfc9-2e6b-42ea-a364-e99f9430f7a4" class="code code-wrap"><code>        current_step = 7 # we actually start on the last step since we increment first</code></pre><p id="63ea8f45-b08c-45cd-a63b-b731b1d84b06" class="">define the state of the sequencer</p><pre id="6266d4b1-883b-4b13-9c20-1d07dc742b7a" class="code code-wrap"><code>        beatset = [[False] * 8, [False] * 8, [False] * 8, [False] * 8]
+
+        while A:
+
+            stamp = time.monotonic()
+
+            # redraw the last step to remove the ticker bar (e.g. &#x27;normal&#x27; view)
+            for y in range(4):
+                color = 0
+                if beatset[y][current_step]:
+                    color = DRUM_COLOR[y]
+                trellis.color(current_step,y,color)
+
+            # next beat!
+            current_step = (current_step + 1) % 8
+
+            # draw the vertical ticker bar, with selected voices highlighted
+            for y in range(4):
+                if beatset[y][current_step]:
+                    uart.write(bytes([BIT[y]]))
+                    uart.write(bytes([Num[current_step]]))
+                    r, g, b = DRUM_COLOR[y]
+                    color = (r//2, g//2, b//2)  # this voice is enabled
+                    mixer.play(samples[y], voice=y)
+                    mixer.play(samples[y], voice=y)
+                else:
+                    color = TICKER_COLOR    # no voice on
+                    #uart.write(bytes([0x45]))
+                trellis.color(current_step,y, color)
+            if current_step == 7:
+                time.sleep(0.1)
+                uart.write(bytes([0x45]))
+
+
+
+            # handle button presses while we&#x27;re waiting for the next tempo beat
+            while time.monotonic() - stamp &lt; 60/tempo:
+                # Check for pressed buttons
+                trellis.color(0,4,GOLD)
+
+                trellis.sync()
+
+                time.sleep(0.02)</code></pre><p id="635d30dc-baf6-4e41-a8fd-88234b291f2d" class="">we will use the blink function to check the pressed buttons.</p><pre id="d1feb961-371c-4073-a072-f856ff0dbcef" class="code code-wrap"><code>            def blink(xo,yo,edge):
+                if yo in range(4):
+                    if edge == NeoTrellis.EDGE_RISING
+                        beatset[yo][xo] = not beatset[yo][xo] # enable the voice
+                        if beatset[yo][xo]:
+                            color = DRUM_COLOR[yo]
+                        else:
+                            color = 0
+                        trellis.color(xo,yo,color)</code></pre><p id="ae17d203-3fe3-4d58-8c26-b114934bc4ed" class="">if the a rising edge is detected for the button, the beatset voice is now enbabled for that voice , and the color of that beat set is shown on the sequencer, else when you pressed again, the beatset voice is disabled, and the color is cleared.</p><pre id="b08e1a3a-6a6b-425d-8371-7aea8e7a3f8e" class="code code-wrap"><code>                if xo == 0 and yo == 4:
+                        if edge == NeoTrellis.EDGE_RISING:
+                            data = open(ALONE1[0], &quot;rb&quot;)
+                            wav = audiocore.WaveFile(data)
+                            mixer.voice[4].play(wav)
+                            trellis.color(xo,yo,CYAN)</code></pre><p id="4c738ed3-398c-4978-9a44-f7416787c46d" class="">Also, we set the sample to play at the fifth channel of the mixer to not interupt with drum beat playing on the other channel</p><h3 id="1e331f56-d4a4-46ad-ac04-d9ef40f454ed" class="">Touble shooting</h3><p id="0e6bb0fb-251f-41f6-b118-f9b6d682ef88" class="">In the original code, to make the drums to play at the same time, we use a mixer to play music in different channels. However, the sound samples in mixer are strictly required which means we may not use the sound files which is in different format, so we can only use the 16bit 2 channel 21600 sample rate WAV files instead of a MP3 files which we used in launchpad mode.</p><h2 id="fb3d254d-5b34-4809-82d0-1d18deeed590" class=""><mark class="highlight-brown">Stage 4 8x8 Launchpad with color functions</mark></h2><pre id="fba980ec-fcc9-47f1-b9e2-eec0a08fb3fe" class="code code-wrap"><code>    A = False
+    B = False
+
+    IN = input(&quot;Sequencer: 1 ; Launchpad : 2  ;  1 or 2 ?:&quot;)
+    if int(IN) == 1:
+        uart.write(bytes([0x53]))
+        for y in range(8):
+            for x in range(8):
+                trellis.set_callback(x,y,blink)
+        A = True
+    elif int(IN) == 2:
+        uart.write(bytes([0x4c]))
+        for y in range(8):
+            for x in range(8):
+                trellis.set_callback(x,y,blink2)
+        B = True</code></pre><p id="acca269a-65ae-4f03-84ac-30da93bc2eb0" class="">To make the user to choose which mode they would like to play, we use a simple python input to realize that function. In this way, the user could choose the mode they want to play by interacting with console.</p><p id="35f4a95e-9aad-4bac-abbf-96b8a4002578" class="">Then we made a number of light function which will produce different light effect when the button is pressed:</p><pre id="d388345c-b6ad-495c-82bf-60a129522ed9" class="code code-wrap"><code>def cross(x,y,color):
+    trellis.color(x,y,color)
+    trellis.color(x,y,OFF)
+    if x == 0 :
+        if y == 0:
+            trellis.color(x,y+1,color)
+            trellis.color(x+1,y,color)
+            trellis.color(x,y+1,OFF)
+            trellis.color(x+1,y,OFF)
+        elif y == 7:
+            trellis.color(x,y-1,color)
+            trellis.color(x+1,y,color)
+            trellis.color(x,y-1,OFF)
+            trellis.color(x+1,y,OFF)
+        elif y in range(1,7):
+            trellis.color(x,y+1,color)
+            trellis.color(x,y-1,color)
+            trellis.color(x+1,y,color)
+            trellis.color(x,y+1,OFF)
+            trellis.color(x,y-1,OFF)
+            trellis.color(x+1,y,OFF)
+    elif x == 7:
+        if y == 0:
+            trellis.color(x,y+1,color)
+            trellis.color(x-1,y,color)
+            trellis.color(x,y+1,OFF)
+            trellis.color(x-1,y,OFF)
+        elif y == 7:
+            trellis.color(x,y-1,color)
+            trellis.color(x-1,y,color)
+            trellis.color(x,y-1,OFF)
+            trellis.color(x-1,y,OFF)
+        elif y in range(1,7):
+            trellis.color(x,y+1,color)
+            trellis.color(x,y-1,color)
+            trellis.color(x-1,y,color)
+            trellis.color(x,y+1,OFF)
+            trellis.color(x,y-1,OFF)
+            trellis.color(x-1,y,OFF)
+
+    elif y == 0 and x in range(1,7):
+        trellis.color(x,y+1,color)
+        trellis.color(x+1,y,color)
+        trellis.color(x-1,y,color)
+        trellis.color(x,y+1,OFF)
+        trellis.color(x+1,y,OFF)
+        trellis.color(x-1,y,OFF)
+    elif y == 7 and x in range(1,7):
+        trellis.color(x,y-1,color)
+        trellis.color(x+1,y,color)
+        trellis.color(x-1,y,color)
+        trellis.color(x,y-1,OFF)
+        trellis.color(x+1,y,OFF)
+        trellis.color(x-1,y,OFF)
+
+    else:
+        trellis.color(x,y+1,color)
+        trellis.color(x,y-1,color)
+        trellis.color(x+1,y,color)
+        trellis.color(x-1,y,color)
+        trellis.color(x,y+1,OFF)
+        trellis.color(x,y-1,OFF)
+        trellis.color(x+1,y,OFF)
+        trellis.color(x-1,y,OFF)</code></pre><figure id="76f96d97-24f2-4e3f-a118-c789e717d1d4" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_7.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_7.gif?raw=true"/></a></figure><pre id="538c5519-5155-4783-b2fa-356a133847a7" class="code code-wrap"><code>def rainbow(x,y,color):
+    for a in range(8):
+        trellis.color(a,a,colorwheel(4*a*a))
+        trellis.color(a,7-a,colorwheel(4*a*a))
+    for a in range(8):
+        trellis.color(a,a,OFF)
+        trellis.color(a,7-a,OFF)
+</code></pre><figure id="1e27504a-7422-40cb-984f-05187c9727bf" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_4.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_4.gif?raw=true"/></a></figure><pre id="57fc659c-7bc7-4d4b-8121-04d03be53b69" class="code code-wrap"><code>
+def block(x,y,color):
+    if x in range(4) and y in range(4):
+        for x in range(4):
+            for y in range(4):
+                trellis.color(x,y,colorwheel(4*x*y))
+    if x in range(4,8) and y in range(4):
+        for x in range(4,8):
+            for y in range(4):
+                trellis.color(x,y,colorwheel(4*x*y))
+    if x in range(4) and y in range(4,8):
+        for x in range(4):
+            for y in range(4,8):
+                trellis.color(x,y,colorwheel(4*x*y))
+    if x in range(4,8) and y in range(4,8):
+        for x in range(4,8):
+            for y in range(4,8):
+                trellis.color(x,y,colorwheel(4*x*y))
+
+    for y in range(8):
+        for x in range(8):
+            trellis.color(x,y,OFF)</code></pre><figure id="24054124-ad2d-41cf-ad37-5be4c41a1341" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_3.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_3.gif?raw=true"/></a></figure><pre id="03bcf18e-6b09-49b7-aa8b-acee5902b92c" class="code code-wrap"><code>def waterx(x,y,color):
+    for x in range(8):
+        trellis.color(x,0,color)
+        trellis.color(x,1,color)
+        trellis.color(x,2,color)
+        trellis.color(x,3,color)
+        trellis.color(x,4,color)
+        trellis.color(x,5,color)
+        trellis.color(x,6,color)
+        trellis.color(x,7,color)
+
+    for x in range(7,-1,-1):
+        trellis.color(x,0,OFF)
+        trellis.color(x,1,OFF)
+        trellis.color(x,2,OFF)
+        trellis.color(x,3,OFF)
+        trellis.color(x,4,OFF)
+        trellis.color(x,5,OFF)
+        trellis.color(x,6,OFF)
+        trellis.color(x,7,OFF)
+
+def watery(x,y,color):
+    for y in range(8):
+        trellis.color(0,y,color)
+        trellis.color(1,y,color)
+        trellis.color(2,y,color)
+        trellis.color(3,y,color)
+        trellis.color(4,y,color)
+        trellis.color(5,y,color)
+        trellis.color(6,y,color)
+        trellis.color(7,y,color)
+
+    for y in range(7,-1,-1):
+        trellis.color(0,y,OFF)
+        trellis.color(1,y,OFF)
+        trellis.color(2,y,OFF)
+        trellis.color(3,y,OFF)
+        trellis.color(4,y,OFF)
+        trellis.color(5,y,OFF)
+        trellis.color(6,y,OFF)
+        trellis.color(7,y,OFF)</code></pre><figure id="528b9acd-6f52-4c3f-ad1b-acffa29e5b3a" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_1.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_1.gif?raw=true"/></a></figure><pre id="5b873f9a-fed4-4080-9f2c-cb9fbaa5f243" class="code code-wrap"><code>def bigcross(x,y,color):
+    for a in range(8):
+        trellis.color(x,a,color)
+
+
+    for b in range(8):
+        trellis.color(b,y,color)
+
+    for a in range(8):
+        trellis.color(x,a,OFF)
+
+
+    for b in range(8):
+        trellis.color(b,y,OFF)</code></pre><figure id="d235e322-2420-4bac-80bb-2dab7135f141" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_6.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_6.gif?raw=true"/></a></figure><pre id="e612063c-1776-49d8-bfcd-e85191b25c84" class="code code-wrap"><code>
+def spin(x,y,color):
+    a = 1
+    b = 1
+    while a &lt;= 5:
+        for i in range(a):
+            if y &lt; 0 or y &gt; 7:
+                break
+            x = x+b
+            if x &gt;= 0 and x &lt;= 7:
+                trellis.color(x,y,color)
+                trellis.color(x-b,y,OFF)
+
+            else:
+                x = x-b
+                break
+        for j in range(a):
+            if x &lt; 0 or x &gt; 7:
+                break
+            y = y+b
+            if y &lt;= 7 and y &gt;= 0:
+                trellis.color(x,y,color)
+                trellis.color(x,y-b,OFF)
+            else:
+                y = y-b
+                break
+        a += 1
+        b *= -1
+    trellis.color(x,y,OFF)</code></pre><figure id="f75f8b16-c5fb-4385-a366-1c3b2cc7675a" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_5.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_5.gif?raw=true"/></a></figure><figure id="182a526f-74e6-495c-b843-19a9fd56b251" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_5_2.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_5_2.gif?raw=true"/></a></figure><pre id="11984cc3-9488-4a1d-b0f5-3083842955a6" class="code code-wrap"><code>
+
+def love(x,y,color):
+    a=0
+    b=0
+    trellis.color(0+a,2+b,color)
+    trellis.color(0+a,3+b,color)
+    trellis.color(1+a,0+b,color)
+    trellis.color(2+a,0+b,color)
+    trellis.color(3+a,1+b,color)
+    trellis.color(4+a,0+b,color)
+    trellis.color(5+a,0+b,color)
+    trellis.color(6+a,1+b,color)
+    trellis.color(6+a,2+b,color)
+    trellis.color(6+a,3+b,color)
+    trellis.color(1+a,4+b,color)
+    trellis.color(2+a,5+b,color)
+    trellis.color(3+a,6+b,color)
+    trellis.color(4+a,5+b,color)
+    trellis.color(5+a,4+b,color)
+    trellis.color(0+a,1+b,color)
+    time.sleep(0.5)
+    trellis.color(0+a,2+b,OFF)
+    trellis.color(0+a,3+b,OFF)
+    trellis.color(1+a,0+b,OFF)
+    trellis.color(2+a,0+b,OFF)
+    trellis.color(3+a,1+b,OFF)
+    trellis.color(4+a,0+b,OFF)
+    trellis.color(5+a,0+b,OFF)
+    trellis.color(6+a,1+b,OFF)
+    trellis.color(6+a,2+b,OFF)
+    trellis.color(6+a,3+b,OFF)
+    trellis.color(1+a,4+b,OFF)
+    trellis.color(2+a,5+b,OFF)
+    trellis.color(3+a,6+b,OFF)
+    trellis.color(4+a,5+b,OFF)
+    trellis.color(5+a,4+b,OFF)
+    trellis.color(0+a,1+b,OFF)</code></pre><figure id="b5debb61-4541-4ce4-8e7f-37d0712fa77a" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_2.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_2.gif?raw=true"/></a></figure><pre id="7b2b9968-9181-4d06-9687-dcabc9f99c25" class="code code-wrap"><code>def loveloop(x,y):
+    i=0
+    while True:
+        if i &lt; 255:
+            trellis.color(0,2,colorwheel(i))
+            trellis.color(0,3,colorwheel(i))
+            trellis.color(1,0,colorwheel(i))
+            trellis.color(2,0,colorwheel(i))
+            trellis.color(3,1,colorwheel(i))
+            trellis.color(4,0,colorwheel(i))
+            trellis.color(5,0,colorwheel(i))
+            trellis.color(6,1,colorwheel(i))
+            trellis.color(6,2,colorwheel(i))
+            trellis.color(6,3,colorwheel(i))
+            trellis.color(1,4,colorwheel(i))
+            trellis.color(2,5,colorwheel(i))
+            trellis.color(3,6,colorwheel(i))
+            trellis.color(4,5,colorwheel(i))
+            trellis.color(5,4,colorwheel(i))
+            trellis.color(0,1,colorwheel(i))
+            i += 1
+        elif i == 255:
+            while (i&gt;0):
+                trellis.color(0,2,colorwheel(i))
+                trellis.color(0,3,colorwheel(i))
+                trellis.color(1,0,colorwheel(i))
+                trellis.color(2,0,colorwheel(i))
+                trellis.color(3,1,colorwheel(i))
+                trellis.color(4,0,colorwheel(i))
+                trellis.color(5,0,colorwheel(i))
+                trellis.color(6,1,colorwheel(i))
+                trellis.color(6,2,colorwheel(i))
+                trellis.color(6,3,colorwheel(i))
+                trellis.color(1,4,colorwheel(i))
+                trellis.color(2,5,colorwheel(i))
+                trellis.color(3,6,colorwheel(i))
+                trellis.color(4,5,colorwheel(i))
+                trellis.color(5,4,colorwheel(i))
+                trellis.color(0,1,colorwheel(i))
+                i -= 1
+</code></pre><p id="34ee1813-255e-4a71-b4a8-747329d640b3" class="">end</p><figure id="d70a9e31-8b92-455a-bfe6-ca1f8182a042" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/end.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/end.gif?raw=true"/></a></figure><pre id="30e1fb3b-d12c-435d-a861-83e67d10f98d" class="code code-wrap"><code>
+def cloud(x,y,color):
+    for y in range(8):
+        for x in range(8):
+            trellis.color(x,y,colorwheel(4*x*y))
+    for y in range(8):
+        for x in range(8):
+            trellis.color(x,y,OFF)</code></pre><figure id="2617fc15-cd25-477f-9e36-a81386934808" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_8.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_8.gif?raw=true"/></a></figure><pre id="ea0b3ee1-3207-4642-a3ed-4f04d8de0610" class="code code-wrap"><code>
+def cloud_edit(x,y,color):
+i = 32
+if i &lt; 64:
+if x == 4 and y == 4:
+    for b in range(y,y+4,1):
+        for a in range(x,x+4,1):
+            rinbowgrab = color
+            #trellis.color(a,b-1,OFF)
+            rinbowgrab = (rinbowgrab[0],rinbowgrab[1]+4*i,rinbowgrab[2]+8*i)
+            trellis.color(a,b,rinbowgrab)
+            i = i+1
+    for b in range(y,y+4,1):
+        for a in range(x,x+4,1):
+            trellis.color(a,b,OFF)
+if x == 3 and y == 3:
+    for b in range(y,y-4,-1):
+        for a in range(x,x-4,-1):
+            rinbowgrab = color
+            rinbowgrab = (rinbowgrab[0],rinbowgrab[1]+4*i,rinbowgrab[2]+8*i)
+            trellis.color(a,b,rinbowgrab)
+            i = i+1
+    for b in range(y,y-4,-1):
+        for a in range(x,x-4,-1):
+            trellis.color(a,b,OFF)
+if x == 3 and y == 4:
+    for b in range(y,y+4,1):
+        for a in range(x,x-4,-1):
+            rinbowgrab = color
+            rinbowgrab = (rinbowgrab[0],rinbowgrab[1]+4*i,rinbowgrab[2]+8*i)
+            trellis.color(a,b,rinbowgrab)
+    for b in range(y,y+4,1):
+        for a in range(x,x-4,-1):
+            trellis.color(a,b,OFF)
+if x == 4 and y == 3:
+    for b in range(y,y-4,-1):
+        for a in range(x,x+4,1):
+            rinbowgrab = color
+            rinbowgrab = (rinbowgrab[0],rinbowgrab[1]+4*i,rinbowgrab[2]+8*i)
+            trellis.color(a,b,rinbowgrab)
+            i = i+1
+    for b in range(y,y-4,-1):
+        for a in range(x,x+4,1):
+            trellis.color(a,b,OFF)
+else:
+    love(x,y,color)</code></pre><figure id="54756a25-fc53-45c7-b30f-4dfafcd52356" class="image"><a href="https://github.com/MaxMa6150/final_project/blob/main/light/light_9.gif?raw=true"><img src="https://github.com/MaxMa6150/final_project/blob/main/light/light_9.gif?raw=true"/></a></figure><h3 id="351de568-7b4c-4cb8-97d9-1d104793e23e" class="">Trouble shooting</h3><p id="02baba7a-c0b5-4e80-8bb9-7b01b115cc40" class="">During the light progarm testing, we found an issue that since the light function is playing with the music playing, the speed of music playing the the light show playing will be affected when they play together, and the user can not interact with the buttons when the light is playing. Our guess is that the I2C bus is taking too much data from the borad, and it has reach its limit transmitssion speed, so in order to speed up the I2C transmission speed, we change the I2C frequency from 0.1Mhz to 0.4Mhz, and it significantly increased the speed of light functions.</p><h2 id="99de1ccb-193c-4439-8550-fd0c4b62d81e" class=""><mark class="highlight-brown">PIO used for UART communication</mark></h2><h3 id="57a5c810-9318-4547-99ca-786308364775" class="">Introduction to the RP2040 PIO module</h3><p id="3e964ba3-2af1-4da7-8bde-2047bc6d73f4" class="">Programmable I/O (PIO) is a new piece of hardware developed for RP2040. Serial communication is the main focus of PIO. I2C, SPI, and UART are three prominent serial protocols that are often hardware supported by microcontrollers. The number and kinds of serial interfaces that can be used, though, are always constrained by this hardware support. By offering a highly flexible, programmable I/O peripheral that will handle the bit-banging and offer straightforward input and output FIFO queues to the microcontroller core, PIO seeks to overcome this issue. In short, it allows you to create new types of (or additional) hardware interfaces on your RP2040-based device</p><p id="f9228bfc-0fbf-4480-af32-d2d00cd0bea2" class="">For the purpose of manipulating GPIOs and transferring data, there are two PIO blocks, each with four state machines, which can operate independently. PIO state machines, as opposed to a general-purpose processor, are highly specialized for IO with an emphasis on determinism, exact timing, and close integration with fixed-function hardware.</p><p id="b10bdeb1-693b-4ebc-8bfd-4229b77813f8" class="">In our project, since it is highly delay sensitive,we want to reduce the impact of latency on results. So we used PIO_UART to replace the traditional UART protocol.</p><figure id="925a2e54-f3aa-40e7-90bd-ffbbf28af790" class="image"><a href="https://user-images.githubusercontent.com/114200453/210097103-2e5e9239-df1a-4d61-9417-1d587618f48e.png"><img src="https://user-images.githubusercontent.com/114200453/210097103-2e5e9239-df1a-4d61-9417-1d587618f48e.png"/></a></figure><h2 id="7aba7735-9b81-4768-9793-e915fae9b2c3" class=""><mark class="highlight-brown">Development process</mark></h2><h3 id="f5fa548e-d0eb-41da-8f18-c7008891e2ed" class="">Stage 1</h3><p id="a4f113b4-39a1-4a28-b785-04e01dbd768c" class="">Firstly, we try to use PIO_UART to both send and write data on the same RP2040 board with TX and RX port connected together:</p><pre id="6003c91e-1e22-4c97-9253-dced70c1b10c" class="code code-wrap"><code>#include &quot;pico/stdlib.h&quot;
+#include &quot;hardware/pio.h&quot;
+#include &quot;uart_tx.pio.h&quot;
+#include &lt;stdio.h&gt;
+#include &quot;uart_rx.pio.h&quot;
+#include &quot;hardware/clocks.h&quot;
+#include &quot;LCD_st7735.h&quot;
+
+// normally attachc UART0 to.
+// const uint PIN_TX = 0;
+// This is the same as the default UART baud rate on Pico
+// const uint SERIAL_BAUD = 115200;
+const uint SERIAL_BAUD = 115200;
+// normally attach UART1 to.
+// const uint PIN_RX = 1;
+#define PIN_TX 0
+#define PIN_RX 1
+
+
+int main() {
+    stdio_init_all();
+    gpio_init(PIN_TX);
+    gpio_set_function(PIN_TX, GPIO_FUNC_UART);
+    uint offset1 = pio_add_program(pio0, &amp;uart_tx_program);
+    uart_tx_program_init(pio0, 0, offset1, PIN_TX, SERIAL_BAUD);
+    uint offset2 = pio_add_program(pio1, &amp;uart_rx_program);
+    uart_rx_program_init(pio1, 0, offset2, PIN_RX, SERIAL_BAUD);
+    char c;
+    while (true) {
+        uart_tx_program_puts(pio0, 0, &quot;hello&quot;);
+        sleep_ms(1000);
+        char c[5];
+        for(int i = 0; i &lt; 5; i++){
+            c[i] = uart_rx_program_getc(pio1, 0);
+        }
+        printf(&quot;test\n&quot;);
+        printf(&quot;%s&quot;,c);
+        printf(&quot;\n&quot;);
+
+        printf(&quot;test\n&quot;);
+     }
+     return 0;
+ }</code></pre><p id="4a33b4bb-d952-448e-871a-756c2390a7df" class="">Firstly we set the serial speed as 115200 and TX/RX pins with 0 and 1 <code>// const uint SERIAL_BAUD = 115200; const uint SERIAL_BAUD = 115200; // normally attach UART1 to. // const uint PIN_RX = 1; #define PIN_TX 0 #define PIN_RX 1</code> For the uart_tx and uart_rx setup, we seperately use pio0 for tx and pio1 for rx with both state machine 0. We also set <code>PIN_TX</code> with GPIO UART function. <code>stdio_init_all();     gpio_init(PIN_TX);     gpio_set_function(PIN_TX, GPIO_FUNC_UART);     uint offset1 = pio_add_program(pio0, &amp;uart_tx_program);     uart_tx_program_init(pio0, 0, offset1, PIN_TX, SERIAL_BAUD);     uint offset2 = pio_add_program(pio1, &amp;uart_rx_program);     uart_rx_program_init(pio1, 0, offset2, PIN_RX, SERIAL_BAUD);</code> For sending data, we can send a string with <code>uart_tx_program_puts()</code>function. The input could be a string. <code>uart_tx_program_puts(pio0, 0, &quot;hello&quot;);</code> <strong>Note: for rx reading data, the </strong><code><strong>uart_rx_program_getc()</strong></code><strong> function only reads one character at a time, hence when we are sending “hello” that is 5 characters, hence we need to put a for loop for reading like follows</strong></p><pre id="1b88b602-1ee6-45dc-afe5-6ddb9798a8a9" class="code code-wrap"><code>char c[5];
+       for(int i = 0; i &lt; 5; i++){
+           c[i] = uart_rx_program_getc(pio1, 0);
+       }
+       printf(&quot;test\n&quot;);
+       printf(&quot;%s&quot;,c);</code></pre><h3 id="d640101a-cb8c-4cd8-9633-82e8661ef9fb" class="">Stage 2</h3><p id="8cf2e81a-c359-43c9-bd1b-930a40938c4f" class="">Then we tried to read the data sent from one RP2040 TX port with circuitpython control at second RP2040 board RX port: circuitpython code:</p><pre id="3fa8c7db-aa1a-4d3d-a153-811c9c5c7d16" class="code code-wrap"><code>import busio
+import board
+import time
+
+uart = busio.UART(board.TX, board.RX, baudrate=9600)
+
+while True:
+    uart.write(bytes([0x60]))
+    print(&quot;test???????????????&quot;)
+    time.sleep(2)
+    uart.write(bytes([0x55]))
+    print(&quot;test---------------&quot;)
+    time.sleep(2)
+</code></pre><p id="5316daa5-c7c8-46d9-81f8-0b674c536633" class="">After first RP2040 send byte input and second board read the data, the data will be print at both board. The demo is shown below:</p><figure id="977ae680-c467-4b89-be00-50f51a0b89c6" class="image"><a href="https://user-images.githubusercontent.com/114200453/210075105-dbdf75aa-e74c-4ed4-af15-e6f969e5d8ff.gif"><img src="https://user-images.githubusercontent.com/114200453/210075105-dbdf75aa-e74c-4ed4-af15-e6f969e5d8ff.gif"/></a></figure><figure id="f0e5065a-2040-4ce8-a7b7-8a2e8c9b56f7" class="image"><a href="https://user-images.githubusercontent.com/114200453/210075149-2147d70e-271f-4d1a-bf8a-9ce7ada9c7b9.gif"><img src="https://user-images.githubusercontent.com/114200453/210075149-2147d70e-271f-4d1a-bf8a-9ce7ada9c7b9.gif"/></a></figure><p id="8149fbc5-ea9a-487d-a4ab-f7f5f9bf7a40" class="">From the result above, we found that with different speed, the delay does not matter. So PIO_UART is a good choice for delay reduction.</p><p id="aabf113f-4503-4f54-a401-bcda7d638d2e" class=""><strong>Trouble shooting:</strong> 1. Different from C language, <code>uart.write()</code> function only allows bytes input. But it does not really matter in our case since <code>uart_rx_program_getc()</code> function also only reads one character at a time. So in our final design, we make circuitpython board send a letter to C when we want the new LCD information display. Each byte input from circuitpython can be converted to a letter due to ASCII. 2. <strong>Important!</strong> Both board should connected to the same PC when UART is running. We firstly tried to connect two board to different PCs, and no output is printed in console.</p><h3 id="e48cfe87-1644-43db-84c4-06ac8125494c" class="">Stage 3</h3><p id="32bf3a43-b026-4d9f-8bde-4f7f817757ad" class="">Finally, we modify both python and c code to use PIO_UART in our project. Firstly, we use switching case in the main function to show which mode the user is in. 1. Game initial When the user initialize(turn on) the pad, it will send a letter ‘s’ to Pico4ML. After Pico4ML received the letter, it will in initialize mode</p><pre id="2d53511a-3140-4154-bf2a-99929691b1a9" class="code code-wrap"><code>case &#x27;s&#x27;:
+                game_init();
+                break;</code></pre><p id="f1ec5bd3-9a51-44b4-a615-004809e58298" class="">The LCD will display adafruit symbol and “Lauch Pad Music Game” on the screen. With ‘1’ to ‘5’ sent to Pico4ML, phrase with different color will be shown on the screen.</p><pre id="0a911492-5ddc-44dc-bbc0-985666b8c020" class="code code-wrap"><code>void game_init(){
+     ST7735_FillScreen(ST7735_BLACK);
+     while (true){
+        char c = uart_rx_program_getc(pio1,0);
+        putchar(c);
+        if (c == &#x27;1&#x27;){
+            ST7735_WriteString(7, 20, &quot;LAUNCH&quot;, Font_11x18, ST7735_BLACK, ST7735_CYAN);
+        }
+        else if (c == &#x27;2&#x27;){
+            ST7735_WriteString(23, 45, &quot;PAD&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+        }
+        else if (c == &#x27;3&#x27;){
+            ST7735_WriteString(12, 70, &quot;MUSIC&quot;, Font_11x18, ST7735_BLACK, ST7735_YELLOW);
+        }
+        else if (c == &#x27;4&#x27;){
+            ST7735_WriteString(12, 95, &quot;GAME!&quot;, Font_11x18, ST7735_BLACK, ST7735_RED);
+        }
+        else if (c == &#x27;5&#x27;){
+            ST7735_FillScreen(ST7735_GREEN);
+            break;
+        }
+     }</code></pre><ol type="1" id="26c246e5-f3cc-4ddf-be5e-8c969227f455" class="numbered-list" start="1"><li>Sequencer mode When the user choose the sequencer mode, it will send a letter ‘S’ to Pico4ML. After Pico4ML received the letter, it will in sequencer mode and show “Drum Mode” on LCD. After 1s sleep, LCD will show four rows of “oooooooo” indicating that four drum are initialized and not played.</li></ol><pre id="f9305cfc-30e9-455a-b025-948952d8f704" class="code code-wrap"><code>case &#x27;S&#x27;:
+                ST7735_WriteString(18, 30, &quot;Drum&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(18, 60, &quot;Mode&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                sleep_ms(1000);
+                ST7735_FillScreen(ST7735_GREEN);
+                char drum_1[9] = &quot;oooooooo&quot;;
+                char drum_2[9] = &quot;oooooooo&quot;;
+                char drum_3[9] = &quot;oooooooo&quot;;
+                char drum_4[9] = &quot;oooooooo&quot;;
+
+                // for (int j = 1; j &lt; 5; j++){
+                // ST7735_WriteString(3,20*j,drum_1,Font_7x10,ST7735_BLACK, ST7735_GREEN);
+                //     }
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);</code></pre><figure id="f3e4b1d6-9520-4c36-9196-cbed89f27833" class="image"><a href="https://user-images.githubusercontent.com/114200453/210077245-2872c396-aefd-48f0-bbe2-164b1fd8be3f.png"><img src="https://user-images.githubusercontent.com/114200453/210077245-2872c396-aefd-48f0-bbe2-164b1fd8be3f.png"/></a></figure><p id="e317fe8b-da76-4ed0-be16-3ca6f06f6cf6" class="">S_start_LCD</p><p id="42053dea-43c8-454d-8925-58a912f58d09" class="">During the sequencer mode, QTPY2040 will continuous send data to Pico4ML:</p><pre id="af7c4031-3544-4930-8325-a265ad7b64e8" class="code code-wrap"><code>        while (true){
+
+            char drum = uart_rx_program_getc(pio1,0);
+
+            if (drum == &#x27;E&#x27;){
+                for (int i = 0; i &lt; 8; i++){
+                    drum_1[i] = &#x27;o&#x27;;
+                    drum_2[i] = &#x27;o&#x27;;
+                    drum_3[i] = &#x27;o&#x27;;
+                    drum_4[i] = &#x27;o&#x27;;
+                }
+
+
+               ST7735_FillScreen(ST7735_GREEN);
+               ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+               ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+               ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+               ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+            }
+
+            else if (drum == &#x27;A&#x27;){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_1[i] = &#x27; &#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_1[i] = &#x27;x&#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == &#x27;B&#x27;){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_2[i] = &#x27; &#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_2[i] = &#x27;x&#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == &#x27;C&#x27;){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_3[i] = &#x27; &#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_3[i] = &#x27;x&#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == &#x27;D&#x27;){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_4[i] = &#x27; &#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_4[i] = &#x27;x&#x27;;
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == &#x27;F&#x27;){
+                ST7735_FillScreen(ST7735_GREEN);
+                ST7735_WriteString(18, 30, &quot;Mode&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(18, 60, &quot;Stopped&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                break;
+            }
+</code></pre><ol type="1" id="0078499b-c2b7-4d4d-b0c1-037c03cd0933" class="numbered-list" start="1"><li>A-D indicates which instrument (which row) are playing during scanning. Then a number after the letter shows the instrument is playing in which meter. If there is a playing instrument, ‘o’ will be erase by ’ ’ and then display a ‘x’ at that place</li></ol><ol type="1" id="2a4391f6-07b5-4605-aa0d-a5058d6c885e" class="numbered-list" start="2"><li>After a loop, ‘E’ will be sent to Pico4Ml and all o/x will be refresh to all o’s</li></ol><ol type="1" id="19665ae5-37f7-4832-8eff-1ae363b718ce" class="numbered-list" start="3"><li>When the mode end, an ‘F’ will be sent to Pico4ML. Then the program <code>break</code> the mode.</li></ol><ol type="1" id="d81a3ddc-b01b-49d0-8530-300c56c46be2" class="numbered-list" start="4"><li>Launchpad mode When the user choose , it will send a letter ‘s’ to Pico4ML. After Pico4ML received the letter, it will in Lauchpad mode.</li></ol><pre id="b54a41e3-8395-4300-97a2-95a82ddac48b" class="code code-wrap"><code>case &#x27;L&#x27;:
+                ST7735_WriteString(12, 30, &quot;Music&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(18, 60, &quot;Mode&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                sleep_ms(500);
+                ST7735_WriteString(7, 90, &quot;Enjoy!&quot;, Font_11x18, ST7735_RED, ST7735_GREEN);</code></pre><figure id="0b0a082b-4528-4b73-aa2f-118b362a123d" class="image"><a href="https://user-images.githubusercontent.com/114200453/210077217-96ba8cfd-309e-4a02-a4c5-d6a80441f42e.png"><img src="https://user-images.githubusercontent.com/114200453/210077217-96ba8cfd-309e-4a02-a4c5-d6a80441f42e.png"/></a></figure><p id="f12a8406-384d-445b-8012-8008a47a870d" class="">L_start_LCD</p><p id="f420a26f-20b4-42f6-a7dd-9651ebd97996" class="">When the user press the last button on keypad, the mode will end and QTPY 2040 will send a letter ‘E’ to Pico4ML indicating there is an ending</p><pre id="b98e4c12-874d-4c0e-9b39-223bc5ca2d96" class="code code-wrap"><code>char end = uart_rx_program_getc(pio1,0);
+                if (end == &#x27;E&#x27;){
+                    ST7735_FillScreen(ST7735_GREEN);
+                    ST7735_WriteString(7, 20, &quot;Thanks&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                    ST7735_WriteString(23, 50, &quot;For&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                    ST7735_WriteString(2, 80, &quot;Playing&quot;, Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                    break;
+                }</code></pre><figure id="5ae8f77c-7d9a-4f13-93db-f64bab8eb4f4" class="image"><a href="https://user-images.githubusercontent.com/114200453/210077275-3872647d-7e32-49cf-91d2-f6af52446fc7.png"><img src="https://user-images.githubusercontent.com/114200453/210077275-3872647d-7e32-49cf-91d2-f6af52446fc7.png"/></a></figure><p id="6877d605-ad52-4946-af47-5b0d7d597d3a" class="">L_end_LCD</p><h2 id="3c8d7c89-28ed-4ed0-a522-f482f523d2c8" class=""><mark class="highlight-brown">Final stage</mark></h2><p id="fdf3a843-33ce-41ed-8023-34ce1f582c0a" class="">We soldering the wire to one borad, and assamble them to the case.</p><h3 id="3d57634f-a356-48d8-a24c-44c42b42dce1" class="">Trouble shooting:</h3><p id="2b2a51e9-14d0-48a9-9e46-75df17d1d81c" class="">Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. For the voltage divider, we used a variable resistor to do the job, and for the low pass filter we use a 10 pf capacitor and a 1k ohm resistor which will wave out the sound above 5k hz,and we also use a 3.3uf capacitor to reduce the short circuit noise produce when the switcher is on and off.</p><h1 id="54d8e6cb-a22e-4821-8d8f-b1e503605ecc" class=""><mark class="highlight-teal">Reflections Pros/cons</mark></h1><p id="913f9be2-c49c-498c-a512-16568115523b" class=""><strong>RP204</strong> pros:</p><p id="128eda6a-a4b1-4e89-a35b-77f9b5ffd8cf" class="">circuit python, large storage, RT and TX supported for board commmunciation</p><p id="b28860a2-7342-428a-8663-f6f4e3619593" class="">cons:</p><p id="45b604d5-6545-4dc9-a023-852a6c8a0c00" class="">uncomplished python libary which didnot include audioio to play audio, low default I2C frequency</p><p id="a26c2be0-eb99-4203-8479-6a3e08b60264" class=""><strong>PICO4ML</strong>:</p><p id="d11c927b-773b-401f-a638-4e3d9510e60d" class="">Pros: LCD display</p><p id="6605e739-5d34-415e-8204-417c08691ca9" class="">Cons: Small storage for data so we can not improve the quality of the music output by loading larger music files.</p><p id="ac19aa8e-6132-4b6f-bb8a-768a8d506f30" class=""><strong>Neotrellis</strong>:</p><p id="690554be-45d2-4088-a762-e66eee6d5e24" class="">Pros: Easy to use and program, silicon button embedded with Neopixel LEDs</p><p id="360f7000-e109-43d0-8d89-e450ba370cfb" class="">Cons: Since the Neopixel leds on the board can only be assesed one at a time with circuitpython, the delay of the LED light show is significant, and even more obvious when the audio is playing with the light functions.</p><p id="429cd439-3b27-4bfb-b3ad-94d280face23" class=""><strong>4ohm 3w Speaker</strong></p><p id="68b37b19-c59f-4395-9d9c-64ce9195ffbd" class="">Pros: sensitive and high quality sound supported,and easy to drive with the AMPs</p><p id="90158843-1435-4dab-b2b9-4cc86e04ce1f" class="">Cons: Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem.</p><h1 id="792d1d91-fd23-4c6d-90ee-28a6f2fd34b2" class=""><mark class="highlight-teal">Future improvements:</mark></h1><p id="ec7745fb-3ff3-484c-a8c4-d15b473e8be6" class="">We will use a SD card to store the music files, so that we can store a much larger sample file groups to directly used by the board. Also, we will update the library of the ciruitpython for the Neotrellis to make the Neopixel LED control easier and faster in a more pratical way. Next, we will update the audio output drive to use audioio instead of audiopwmio to produce a better sound output quality. Finally, we will add more functions to the sequencer such as a speed up and speed down moduel for each beat using time stamp and a recording cycle which will loop the notes you played with.</p><h1 id="decdd65c-2862-4d10-8f4f-c0579d49030c" class=""><mark class="highlight-teal">Feature accomplisments</mark></h1><p id="d7cb3b14-7247-45c2-a193-c61b2073b38e" class="">One of the most interesting feature we have accomplished is the 8 step sequencer playing with the audio sample. Since for a real launchpad, the sample should go along withthe drum beat to produce a basic beat fot the music production,and we produce a 8 beat drum sample which could be real time modified and redistributed to syncronized samples that will give instant feedback to the music composer. It is really exiting to realize the function of producing a drum beat.</p><p id="ac061c58-6bcb-47fd-b6ae-10d7e715d266" class="">The second part which is really exciting is to make a LCD display based on URAT data transmission. By using PIO, the delay of the two board data transmisson is minized. Also, by using URAT to transport data, it will solve the problem that the I2C bus is loading too musch data at the same time, so it is very practical in the future study.</p><p id="e1053a58-7a17-4fc4-9d9a-b51df339425d" class="">
+</p></div></article></body></html>
