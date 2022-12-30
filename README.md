@@ -1108,24 +1108,29 @@ Since we can only use the audiopwmio to drive the speaker, and we are using a au
 For the voltage divider, we used a variable resistor to do the job, and for the low pass filter we use a 10 pf capacitor and  a 1k ohm resistor which will wave out the sound above 5k hz,and we also use a 3.3uf capacitor to reduce the short circuit noise produce when the switcher is on and off. 
 
 # Reflections Pros/cons
-RP2040 pros:
+**RP204**
+pros:
+
 circuit python, large storage, RT and TX supported for board commmunciation
 
 cons:
+
 uncomplished python libary which didnot include audioio to play audio, low default I2C frequency
 
-PICO4ML:
+**PICO4ML**:
 
 Pros: LCD display
 
 Cons: Small storage for data so we can not improve the quality of the music output by loading larger music files. 
 
-Neotrellis:
+**Neotrellis**:
+
 Pros: Easy to use and program, silicon button embedded with Neopixel LEDs
 
 Cons: Since the Neopixel leds on the board can only be assesed one at a time with circuitpython, the delay of the LED light show is significant, and even more obvious when the audio is playing with the light functions. 
 
-4ohm 3w Speaker
+**4ohm 3w Speaker**
+
 Pros: sensitive and high quality sound supported,and easy to drive with the AMPs
 
 Cons: Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. 
