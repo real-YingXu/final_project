@@ -789,7 +789,100 @@ else:
 ### Trouble shooting
 During the light progarm testing, we found an issue that since the light function is playing with the music playing, the speed of music playing the the light show playing will be affected when they play together, and the user can not interact with the buttons when the light is playing. Our guess is that the I2C bus is taking too much data from the borad, and it has reach its limit transmitssion speed, so in order to speed up the I2C transmission speed, we change the I2C frequency from 0.1Mhz to 0.4Mhz, and it significantly increased the speed of light functions. 
 
-### Final stage 
+## PIO used for UART communication
+
+### Introduction to the RP2040 PIO module
+Programmable I/O (PIO) is a new piece of hardware developed for RP2040. The focus of PIO is serial communication. Most microcontrollers have hardware support for popular serial protocols such as I2C, SPI, and UART. However, this hardware support is always limited both in the number of serial interfaces and the types of serial interfaces that can be used. PIO aims to solve this problem by providing a highly configurable, programmable I/O peripheral that will take care of the bit-banging and provide simple input and output FIFO queues to the microcontroller core. In short, it allows you to create new types of (or additional) hardware interfaces on your RP2040-based device
+
+There are two PIO blocks with four state machines each, that can independently execute sequential programs to manipulate GPIOs and transfer data. Unlike a general-purpose processor, PIO state machines are highly specialized for IO, with a focus on determinism, precise timing, and close integration with fixed-function hardware. Each state machine and its supporting hardware occupy approximately the same silicon area as a standard serial interface block, such as an SPI or I2C controller.
+
+In our project, since it is highly delay sensitive,we want to reduce the impact of latency on results. So we used PIO_UART to replace the traditional UART protocol. 
+
+1. Firstly, we try to use PIO_UART to both send and write data on the same RP2040 board with TX and RX port connected together:
+```
+#include "pico/stdlib.h"
+#include "hardware/pio.h"
+#include "uart_tx.pio.h"
+#include <stdio.h>
+#include "uart_rx.pio.h"
+#include "hardware/clocks.h"
+#include "LCD_st7735.h"
+
+// normally attachc UART0 to.
+// const uint PIN_TX = 0;
+// This is the same as the default UART baud rate on Pico
+// const uint SERIAL_BAUD = 115200;
+const uint SERIAL_BAUD = 115200;
+// normally attach UART1 to.
+// const uint PIN_RX = 1;
+#define PIN_TX 0
+#define PIN_RX 1
+
+
+int main() {
+    stdio_init_all();
+    gpio_init(PIN_TX);
+    gpio_set_function(PIN_TX, GPIO_FUNC_UART);
+    uint offset1 = pio_add_program(pio0, &uart_tx_program);
+    uart_tx_program_init(pio0, 0, offset1, PIN_TX, SERIAL_BAUD);
+    uint offset2 = pio_add_program(pio1, &uart_rx_program);
+    uart_rx_program_init(pio1, 0, offset2, PIN_RX, SERIAL_BAUD);
+    char c;
+    while (true) {
+        uart_tx_program_puts(pio0, 0, "hello");
+        sleep_ms(1000);
+        char c[5];
+        for(int i = 0; i < 5; i++){
+            c[i] = uart_rx_program_getc(pio1, 0);
+        }
+        printf("test\n");
+        printf("%s",c);
+        printf("\n");
+        
+        printf("test\n");
+     }
+     return 0;
+ }
+ ```
+ Firstly we set the serial speed as 115200 and TX/RX pins with 0 and 1
+ ```
+ // const uint SERIAL_BAUD = 115200;
+const uint SERIAL_BAUD = 115200;
+// normally attach UART1 to.
+// const uint PIN_RX = 1;
+#define PIN_TX 0
+#define PIN_RX 1
+ ```
+ For the uart_tx and uart_rx setup, we seperately use pio0 for tx and pio1 for rx with both state machine 0. We also set ```PIN_TX``` with GPIO UART function.
+ ```
+ stdio_init_all();
+    gpio_init(PIN_TX);
+    gpio_set_function(PIN_TX, GPIO_FUNC_UART);
+    uint offset1 = pio_add_program(pio0, &uart_tx_program);
+    uart_tx_program_init(pio0, 0, offset1, PIN_TX, SERIAL_BAUD);
+    uint offset2 = pio_add_program(pio1, &uart_rx_program);
+    uart_rx_program_init(pio1, 0, offset2, PIN_RX, SERIAL_BAUD);
+ ```
+ For sending data, we can send a string with ```uart_tx_program_puts()```function. The input could be a string.
+ ```
+ uart_tx_program_puts(pio0, 0, "hello");
+ ```
+ **Note: for rx reading data, the uart_rx_program_getc() function only reads one character at a time, hence when we are sending "hello" that is 5 characters, hence we need to put a for loop for reading like follows**
+ 
+ ```
+ char c[5];
+        for(int i = 0; i < 5; i++){
+            c[i] = uart_rx_program_getc(pio1, 0);
+        }
+        printf("test\n");
+        printf("%s",c);
+ ```
+ 
+ 
+2. Then we tried to read the data sent from one RP2040 TX port with circuitpython control at second RP2040 board RX port:
+
+
+## Final stage 
 We soldering the wire to one borad, and assamble them to the case. 
 
 ### Trouble shooting:
