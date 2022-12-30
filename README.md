@@ -53,9 +53,11 @@ This program is mainly written with [C](https://github.com/MaxMa6150/final_proje
 
 ### Development environment
 Visual Studio Code Version: 1.74.2
+
     Tested on: Thinkpad X1, Windows 10 Pro, Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz   2.11 GHz
 
 MU circuitpython editor Version: 1.1.1
+
     Tested on: DELL XPS13, Windows 10
 
 ## Soldering and case assambling 
