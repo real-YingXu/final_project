@@ -1,6 +1,7 @@
 # final_project
 ![d33960df0febec3224a5414b3f7b8f1](https://user-images.githubusercontent.com/114200453/210052888-22603b10-9648-4263-ac01-44d61f10eff6.jpg)
 
+# Team overview
 
 # project showcase
 In this project,we made a launchpad with a sequencer that can loop drum beat. 
@@ -20,6 +21,8 @@ The demo of Sequencer/Drum mode is shown in [mode_sequencer.mp4](https://drive.g
 
 # project instruction
 
+## Component
+
 For this project, we mainly use four components:
 1. QTPY 2040 for main controlling (controlling speaker, receiving users' press/release feedback from Neotrellis, sending data to Pico4ML for LCD display)
 ![80ab10b70a9447a0f1a1582951cff5e](https://user-images.githubusercontent.com/114200453/205554661-9bcd5967-a685-4f00-b26a-81e221a2b419.jpg)
@@ -30,7 +33,7 @@ For this project, we mainly use four components:
 4. Speaker for .wav/.mps music playing
 ![87bade31b6854a461e84a0713d36958](https://user-images.githubusercontent.com/114200453/209963773-e5f2d20b-5e1b-4e8b-8ba1-9d69e359d704.png)
 
-System diagram:
+## System diagram:
 ![be46a745f1526035cd1deeb1c4a80b3](https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png)
 
 ## Circuit Diagram/Building
@@ -47,6 +50,13 @@ The soldered circuit is shown below:
 ## Software
 
 This program is mainly written with C and circuitpython, where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad (receiving users' pressing data and controlling speaker) which is loaded on the qtpy rp2040. The detailed explaination of code will be shown in the next section.
+
+### Development environment
+Visual Studio Code Version: 1.74.2
+Test on: MacBook Pro (14-inch, 2021)
+    
+    Software: macOS Monterey 12.6
+MU circuitpython editor Version: 1.1.1
 
 ## Soldering and case assambling 
 
