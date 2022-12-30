@@ -1,4 +1,6 @@
 # final_project
+![d33960df0febec3224a5414b3f7b8f1](https://user-images.githubusercontent.com/114200453/210052888-22603b10-9648-4263-ac01-44d61f10eff6.jpg)
+
 
 # project showcase
 In this project,we made a launchpad with a sequencer that can loop drum beat. 
