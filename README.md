@@ -120,7 +120,7 @@ The code for the code for 4-step drumer mode is in second half of [code.py](http
 After we get used to Neotrellis 4x4, we decided to solider four board to make it a 8x8 board, and we will realize a 8 step drumer on that with sample plaing. 
 
 ###Touble shooting
-In the original code, to make the drums to play at the same time, we use a mixer to play music in different channels. However, the sound samples in mixer are strictly required which means 
+In the original code, to make the drums to play at the same time, we use a mixer to play music in different channels. However, the sound samples in mixer are strictly required which means we may not use the sound files which is in different format, so we can only use the 16bit 2 channel 21600 sample rate WAV files instead of a MP3 files which we used in launchpad mode. 
 
 
 ## Stage 4 8x8 Launchpad with color functions
@@ -501,32 +501,39 @@ We soldering the wire to one borad, and assamble them to the case.
 
 ###Trouble shooting:
 Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. 
-For the voltage divider, we used a variable resistor to do the job, and for the low pass filter we use a 330 pf capcitior and  a 1k ohm resistor which will wave out the sound above 5k hz. 
+For the voltage divider, we used a variable resistor to do the job, and for the low pass filter we use a 10 pf capacitor and  a 1k ohm resistor which will wave out the sound above 5k hz,and we also use a 3.3uf capacitor to reduce the short circuit noise produce when the switcher is on and off. 
 
 # Reflections Pros/cons
 RP2040 pros:
 circuit python, large storage, RT and TX supported for board commmunciation
+
 cons:
 uncomplished python libary which didnot include audioio to play audio, low default I2C frequency
 
 PICO4ML:
-Pros:LCD display
-Cons:
+
+Pros: LCD display
+
+Cons: Small storage for data so we can not improve the quality of the music output by loading larger music files. 
 
 Neotrellis:
 Pros: Easy to use and program, silicon button embedded with Neopixel LEDs
+
 Cons: Since the Neopixel leds on the board can only be assesed one at a time with circuitpython, the delay of the LED light show is significant, and even more obvious when the audio is playing with the light functions. 
 
 4ohm 3w Speaker
 Pros: sensitive and high quality sound supported,and easy to drive with the AMPs
+
 Cons: Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. 
 
 
-
-
-
+#Future improvements:
+We will use a SD card to store the music files, so that we can store a much larger sample file groups to directly used by the board. Also, we will update the library of the ciruitpython for the Neotrellis to make the Neopixel LED control easier and faster in a more pratical way. Next, we will update the audio output drive to use audioio instead of audiopwmio to produce a better sound output quality. Finally, we will add more functionalty to the sequencer such as a speed up and down moduel for each beat using time stamp and a recording cycle which will loop the notes you played with. 
 
 # Feature accomplisments
+One of the most interesting feature we have accomplished is the 8 step sequencer playing with the audio sample. Since for a real launchpad, the sample should go along withthe drum beat to produce a basic beat fot the music production,and we produce a 8 beat drum sample which could be real time modified and redistributed to syncronized samples that will give instant feedback to the music composer. It is really exiting to realize the function of producing a drum beat. 
+The second part which is really exciting is to make a LCD display based on URAT data transmission. By using PIO, the delay of the two board data transmisson is minized. Also, by using URAT to transport data, it will solve the problem that the I2C bus is loading too musch data at the same time, so it is very practical in the future study. 
+
 # PIO explaination
 # 
 
