@@ -5,10 +5,18 @@
 # project showcase
 In this project,we made a launchpad with a sequencer that can loop drum beat. 
 ## launchpad mode
-When the user pressed the button in the right sequence, the music will play with the lights to play a full song with cool effects.
+When the user pressed the button in the right sequence, the music will play with the lights to play a full song with cool effects. Each 4 keys on the keypad represent the same music file. So if the users press the block in order, a whole sone could be played by the speaker.
+
+The order of block needed to be pressed is shown below:
+加图
+
+The demo of launchpad mode is shown in [mode_launchpad.mp4](https://drive.google.com/drive/folders/14ZOfYKHZ7gTeN6y0t-aUhNkz1XuKzZ9G) video file.
 
 ## Sequencer mode
-The user can proudce a 8 step drum beat with four drum sounds proceeding with the sample playing. The user can real time modify the drum beat by assemble different drum beat to the differet second of two period of 4/4 music intervel. 
+The user can proudce a 8 step drum beat with four drum sounds proceeding with the sample playing. The user can real time modify the drum beat by assemble different drum beat to the differet second of two period of 4/4 music intervel. When the pressed key(instrument) is played by the speaker, the LCD screen will refresh and show the current drum beat('o' means no instrument is played, x means there is a playing instrument). By pressing the a yellow button in row 5, ...
+
+
+The demo of Sequencer/Drum mode is shown in [mode_sequencer.mp4](https://drive.google.com/drive/folders/14ZOfYKHZ7gTeN6y0t-aUhNkz1XuKzZ9G) and [sequencer_LCD.mp4](https://drive.google.com/drive/folders/14ZOfYKHZ7gTeN6y0t-aUhNkz1XuKzZ9G) video files.
 
 # project instruction
 
