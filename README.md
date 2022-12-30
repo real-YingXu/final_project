@@ -322,7 +322,7 @@ The code for the code for 4-step drumer mode is in second half of [code.py](http
 ## Stage 3 8x8 8-Step drumer
 After we get used to Neotrellis 4x4, we decided to solider four board to make it a 8x8 board, and we will realize a 8 step drumer on that with sample plaing. 
 ### code 
-
+```
         for v in range(4):
             uart.write(bytes([BIT1[v]]))
             trellis.color(0,v,DRUM_COLOR[v])
@@ -341,12 +341,15 @@ After we get used to Neotrellis 4x4, we decided to solider four board to make it
 
             time.sleep(0.3)
             samples.append(sample)
- 
+``` 
  Read the 4 wave files, convert to stereo samples, and store (show load status on neopixels and play audio once loaded too!)
  
 define the global state
+```
         current_step = 7 # we actually start on the last step since we increment first
+```
 define the state of the sequencer
+```
         beatset = [[False] * 8, [False] * 8, [False] * 8, [False] * 8]
         
         while A:
@@ -390,8 +393,9 @@ define the state of the sequencer
                 trellis.sync()
 
                 time.sleep(0.02)
+```
 we will use the blink function to check the pressed buttons. 
-
+```
             def blink(xo,yo,edge):
                 if yo in range(4):
                     if edge == NeoTrellis.EDGE_RISING
@@ -401,14 +405,16 @@ we will use the blink function to check the pressed buttons.
                         else:
                             color = 0
                         trellis.color(xo,yo,color)
+```
 if the a rising edge is detected for the button, the beatset voice is now enbabled for that voice , and the color of that beat set is shown on the sequencer, else when you pressed again, the beatset voice is disabled, and the color is cleared. 
-
+```
                 if xo == 0 and yo == 4:
                         if edge == NeoTrellis.EDGE_RISING:
                             data = open(ALONE1[0], "rb")
                             wav = audiocore.WaveFile(data)
                             mixer.voice[4].play(wav)
                             trellis.color(xo,yo,CYAN)
+```
 Also, we set the sample to play at the fifth channel of the mixer to not interupt with drum beat playing on the other channel
 
 
@@ -943,16 +949,121 @@ void game_init(){
      }
 ```
 2. Sequencer mode
-When the user choose the sequencer mode, it will send a letter 'S' to Pico4ML. After Pico4ML received the letter, it will in sequencer mode and show "Drum Mode" on LCD.
+When the user choose the sequencer mode, it will send a letter 'S' to Pico4ML. After Pico4ML received the letter, it will in sequencer mode and show "Drum Mode" on LCD. After 1s sleep, LCD will show four rows of "oooooooo" indicating that four drum are initialized and not played.
 ```
 case 'S':
                 ST7735_WriteString(18, 30, "Drum", Font_11x18, ST7735_BLACK, ST7735_GREEN);
                 ST7735_WriteString(18, 60, "Mode", Font_11x18, ST7735_BLACK, ST7735_GREEN);
                 sleep_ms(1000);
                 ST7735_FillScreen(ST7735_GREEN);
+                char drum_1[9] = "oooooooo";
+                char drum_2[9] = "oooooooo";
+                char drum_3[9] = "oooooooo";
+                char drum_4[9] = "oooooooo";
+                
+                // for (int j = 1; j < 5; j++){
+                // ST7735_WriteString(3,20*j,drum_1,Font_7x10,ST7735_BLACK, ST7735_GREEN);
+                //     }
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
 ```
 ![S_start_LCD](https://user-images.githubusercontent.com/114200453/210077245-2872c396-aefd-48f0-bbe2-164b1fd8be3f.png)
-During the sequencer mode, QTPY2040 will continuous send 
+
+During the sequencer mode, QTPY2040 will continuous send data to Pico4ML:
+```
+        while (true){
+
+            char drum = uart_rx_program_getc(pio1,0);
+
+            if (drum == 'E'){
+                for (int i = 0; i < 8; i++){
+                    drum_1[i] = 'o';
+                    drum_2[i] = 'o';
+                    drum_3[i] = 'o';
+                    drum_4[i] = 'o';
+                }
+
+
+               ST7735_FillScreen(ST7735_GREEN); 
+               ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+               ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+               ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+               ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+            }
+
+            else if (drum == 'A'){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_1[i] = ' ';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_1[i] = 'x';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == 'B'){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_2[i] = ' ';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_2[i] = 'x';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == 'C'){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_3[i] = ' ';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_3[i] = 'x';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == 'D'){
+                char num = uart_rx_program_getc(pio1,0);
+                int i = (int)(num) - 48;
+                drum_4[i] = ' ';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                drum_4[i] = 'x';
+                ST7735_WriteString(3, 20, drum_1, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 40, drum_2, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 60, drum_3, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(3, 80, drum_4, Font_7x10, ST7735_BLACK, ST7735_GREEN);
+
+            }
+            else if (drum == 'F'){
+                ST7735_FillScreen(ST7735_GREEN);
+                ST7735_WriteString(18, 30, "Mode", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(18, 60, "Stopped", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                break;
+            }
+                    
+```
+1) A-D indicates which instrument (which row) are playing during scanning. Then a number after the letter shows the instrument is playing in which meter. If there is a playing instrument, 'o' will be erase by ' ' and then display a 'x' at that place
+2) After a loop, 'E' will be sent to Pico4Ml and all o/x will be refresh to all o's
+3) When the mode end, an 'F' will be sent to Pico4ML. Then the program ```break``` the mode.
 
 3. Launchpad mode
 When the user choose , it will send a letter 's' to Pico4ML. After Pico4ML received the letter, it will in Lauchpad mode. 
