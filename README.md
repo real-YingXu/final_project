@@ -804,11 +804,13 @@ During the light progarm testing, we found an issue that since the light functio
 ## PIO used for UART communication
 
 ### Introduction to the RP2040 PIO module
-Programmable I/O (PIO) is a new piece of hardware developed for RP2040. The focus of PIO is serial communication. Most microcontrollers have hardware support for popular serial protocols such as I2C, SPI, and UART. However, this hardware support is always limited both in the number of serial interfaces and the types of serial interfaces that can be used. PIO aims to solve this problem by providing a highly configurable, programmable I/O peripheral that will take care of the bit-banging and provide simple input and output FIFO queues to the microcontroller core. In short, it allows you to create new types of (or additional) hardware interfaces on your RP2040-based device
+Programmable I/O (PIO) is a new piece of hardware developed for RP2040. Serial communication is the main focus of PIO. I2C, SPI, and UART are three prominent serial protocols that are often hardware supported by microcontrollers. The number and kinds of serial interfaces that can be used, though, are always constrained by this hardware support. By offering a highly flexible, programmable I/O peripheral that will handle the bit-banging and offer straightforward input and output FIFO queues to the microcontroller core, PIO seeks to overcome this issue. In short, it allows you to create new types of (or additional) hardware interfaces on your RP2040-based device
 
-There are two PIO blocks with four state machines each, that can independently execute sequential programs to manipulate GPIOs and transfer data. Unlike a general-purpose processor, PIO state machines are highly specialized for IO, with a focus on determinism, precise timing, and close integration with fixed-function hardware. Each state machine and its supporting hardware occupy approximately the same silicon area as a standard serial interface block, such as an SPI or I2C controller.
+For the purpose of manipulating GPIOs and transferring data, there are two PIO blocks, each with four state machines, which can operate independently. PIO state machines, as opposed to a general-purpose processor, are highly specialized for IO with an emphasis on determinism, exact timing, and close integration with fixed-function hardware.
 
 In our project, since it is highly delay sensitive,we want to reduce the impact of latency on results. So we used PIO_UART to replace the traditional UART protocol. 
+![b4d3f8c57b2ebc1fb6571b78e7154eb](https://user-images.githubusercontent.com/114200453/210097103-2e5e9239-df1a-4d61-9417-1d587618f48e.png)
+
 ### Development process
 #### Stage 1
 Firstly, we try to use PIO_UART to both send and write data on the same RP2040 board with TX and RX port connected together:
