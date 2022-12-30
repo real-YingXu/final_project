@@ -49,7 +49,7 @@ The soldered circuit is shown below:
 
 ## Software
 
-This program is mainly written with [C](https://github.com/MaxMa6150/final_project/blob/main/UART%26LCD/rxtx.c) and [circuitpython](), where C is controlling the UART communication between the PICO4ML and qtpy rp2040, and the circuit python realized the functionality of the launchpad (receiving users' pressing data and controlling speaker) which is loaded on the qtpy rp2040. The detailed explaination of code will be shown in the next section.
+This program is mainly written with [C](https://github.com/MaxMa6150/final_project/blob/main/UART%26LCD/rxtx.c) and [circuitpython](https://github.com/MaxMa6150/final_project/blob/main/code.py), where C is controlling the UART communication between the PICO4ML and qtpy rp2040 then displaying the related information on LCD screen, and the circuit python realized the functionality of the launchpad (receiving users' pressing data and controlling speaker) which is loaded on the qtpy rp2040. The detailed explaination of code will be shown in the next section.
 
 ### Development environment
 Visual Studio Code Version: 1.74.2
