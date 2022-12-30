@@ -111,7 +111,7 @@ The code for the code for whack-a-mole mode is in first half of [code.py](https:
 
 We will show the credits on LCD screen which will read the data from RP2040 through PIO in/out. The "hello-world" code for LCD enable is shown [here](https://github.com/MaxMa6150/finalproject.demo/blob/main/hello_LCD.c). 
 
-For LCD display, we basically use ```LCD_st7735.c``` with ```void ST7735_Init(void);```, ```void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, FontDef font, uint16_t color, uint16_t bgcolor);``` and ```void ST7735_FillScreen(uint16_t color);``` function. The header file is shown below:
+For LCD display, we basically use ```LCD_st7735.c``` with ```void ST7735_Init(void);```, ```void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, FontDef font, uint16_t color, uint16_t bgcolor);``` and ```void ST7735_FillScreen(uint16_t color);``` functions. The header file is shown below:
 
 ```
 #ifndef __ST7735_H__
@@ -250,9 +250,35 @@ void ST7735_InvertColors(bool invert);
 #endif // __ST7735_H_
 ```
 
+Firstly, before we want any display on LCD, ```void ST7735_Init(void);``` is used to initialize the screen. ```void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, FontDef font, uint16_t color, uint16_t bgcolor)``` is used to write strings on LCD. We can easily display the strings ```char *str``` and define the strings' location by setting ```uint16_t x``` and ```uint16_t y```. Also, the strings' color and the screen's background color could be defined by ```uint16_t color``` and ```uint16_t bgcolor```. Since the LCD could not actually "delate" previous strings, we can use ```void ST7735_FillScreen(uint16_t color);``` function to erase the previous display.
+
+Also, ```fonts.c``` file has defined letters and symbols with different sizes: ```Font7x10[]``` and ```Font11x18[]```, each number represents the pixel in x and y each letter occupies. The header file is shown below: 
+
+```
+/* vim: set ai et ts=4 sw=4: */
+#ifndef __FONTS_H__
+#define __FONTS_H__
+
+#include <stdint.h>
+
+typedef struct {
+  const uint8_t width;
+  uint8_t height;
+  const uint16_t *data;
+} FontDef;
+
+extern FontDef Font_7x10;
+extern FontDef Font_11x18;
+extern FontDef Font_16x26;
+extern const uint8_t arducam_logo[25608];
+extern const uint16_t IMU_ICM20948[3200];
+
+#endif // __FONTS_H__
+```
+
 ![gswto-8gi1d](https://user-images.githubusercontent.com/113209201/205536461-e9dffa7d-6352-4bbb-873e-25df8729c929.gif)
 
-Later, we will use the LCD display to record the score of Whack a Mole and display the patterns in the 4 steps drumer. The connection between Pico4ML with LCD and QT PY 2040 is needed.
+Later, we will use the LCD display to give users relative information and display the patterns in the 4 steps drumer. The connection between Pico4ML with LCD and QT PY 2040 is needed.
 
 
 ### troubleshooting
