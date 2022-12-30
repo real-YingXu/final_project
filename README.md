@@ -26,6 +26,9 @@ System diagram:
 ![be46a745f1526035cd1deeb1c4a80b3](https://user-images.githubusercontent.com/114200453/209963142-13411307-4ea3-4ca5-8f71-a1c160d71a4a.png)
 
 ## Circuit Diagram/Building
+The circuit diagram:
+![8c6f275736a81fd980d0880fa4b0412](https://user-images.githubusercontent.com/114200453/210054570-08d89f0a-304e-46a3-961f-f0af5e2d8897.jpg)
+
 We firstly assembled all components, which includes Pico4ML, QTPY 2040, Stemma Speaker driver, 4 ohm 3W speaker, low-pass filter composed by 330 ohm resistor and 10pF capacitor, 3.3uF capacitor for short circuit protection, and variable resistor for volume controlling, on the breadboard and tested the functionality:
 ![da9e2b928ca7ea0f4064bbe81ae3c1d](https://user-images.githubusercontent.com/114200453/210047345-1286b7ac-e561-413a-bc32-c845b1d60a0d.jpg)
 
