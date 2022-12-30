@@ -39,11 +39,18 @@ This program is mainly written with C and circuitpython, where C is controlling 
 
 We assambed all component in [adafruit Neotrellis case](https://www.adafruit.com/product/4372), and we use four Neotrellis board [soldered together](https://learn.adafruit.com/adafruit-neotrellis/tiling). All components shown in circuit building section are placed at the back of adafruit Neotrellis case.
 ![0a6b3f3f711cae549443b092d9360e1](https://user-images.githubusercontent.com/114200453/209964686-498c02bd-e179-4ea4-bb4c-3595ccf0aff3.jpg)
-
+first, set the case:
+![IMG_20221230_035749](https://user-images.githubusercontent.com/53798758/210053326-4123ddd0-86c8-4dbb-937b-d0b5c9cf8013.jpg)
+then put the variable resistor into the hole to make it a volumn controller
+![IMG_20221230_035809](https://user-images.githubusercontent.com/53798758/210053402-6e46b0f1-043f-46cf-b732-37f5367247a3.jpg)
+lastly, assemble the case and you are good to go
+![IMG_20221230_035913](https://user-images.githubusercontent.com/53798758/210053517-e8e85e0b-3d68-4acf-b4f5-dcb580a78466.jpg)
+![IMG_20221216_005250](https://user-images.githubusercontent.com/53798758/210053533-5e743da0-1df1-4e20-88d3-77281cdf9622.jpg)
 
 ## Low-pass filter assambling detail
 
-
+Since we can only use the audiopwmio to drive the speaker, and we are using a audio amp for 8ohm 1w speaker, the speaker is easily overdrived,and the background noise is large. SO we need a low pass filter and voltage divider to solve the problem. 
+For the voltage divider, we used a variable resistor to do the job, and for the low pass filter we use a 10 pf capacitor and  a 1k ohm resistor which will wave out the sound above 5k hz,and we also use a 3.3uf capacitor to reduce the short circuit noise produce when the switcher is on and off. 
 
 # project development
 At first as we designed in proposal, we would like to design real time music game that will covert the analog sound signal to pitches and showing LED light on different pitches through FFT(Fast Fourier Transform). However, after talking with Professor Dalton, he recommanded us to use Adafruit Neotrellis to accomplish the goal,and we found a lot of interesting application on the Neotrellis,and we finally decided to make a real instrucment, a "launchpad", instead of a music game hardware based machine. 
@@ -123,6 +130,96 @@ The code for the code for 4-step drumer mode is in second half of [code.py](http
 
 ## Stage 3 8x8 8-Step drumer
 After we get used to Neotrellis 4x4, we decided to solider four board to make it a 8x8 board, and we will realize a 8 step drumer on that with sample plaing. 
+### code 
+
+        for v in range(4):
+            uart.write(bytes([BIT1[v]]))
+            trellis.color(0,v,DRUM_COLOR[v])
+            wave_file = open(DRUM[v], "rb")
+            # OK we managed to open the wave OK
+            for x in range(1,4):
+                trellis.color(x,v,DRUM_COLOR[v])
+            sample = audiocore.WaveFile(wave_file)
+            # debug play back on load!
+            mixer.play(sample, voice=0)
+            for x in range(4, 8):
+                trellis.color(x, v,DRUM_COLOR[v])
+            while mixer.playing:
+                pass
+            #trellis.color(7,v,DRUM_COLOR[v])
+
+            time.sleep(0.3)
+            samples.append(sample)
+ 
+ Read the 4 wave files, convert to stereo samples, and store (show load status on neopixels and play audio once loaded too!)
+ 
+define the global state
+        current_step = 7 # we actually start on the last step since we increment first
+define the state of the sequencer
+        beatset = [[False] * 8, [False] * 8, [False] * 8, [False] * 8]
+        
+        while A:
+
+            stamp = time.monotonic()
+
+            # redraw the last step to remove the ticker bar (e.g. 'normal' view)
+            for y in range(4):
+                color = 0
+                if beatset[y][current_step]:
+                    color = DRUM_COLOR[y]
+                trellis.color(current_step,y,color)
+
+            # next beat!
+            current_step = (current_step + 1) % 8
+
+            # draw the vertical ticker bar, with selected voices highlighted
+            for y in range(4):
+                if beatset[y][current_step]:
+                    uart.write(bytes([BIT[y]]))
+                    uart.write(bytes([Num[current_step]]))
+                    r, g, b = DRUM_COLOR[y]
+                    color = (r//2, g//2, b//2)  # this voice is enabled
+                    mixer.play(samples[y], voice=y)
+                    mixer.play(samples[y], voice=y)
+                else:
+                    color = TICKER_COLOR    # no voice on
+                    #uart.write(bytes([0x45]))
+                trellis.color(current_step,y, color)
+            if current_step == 7:
+                time.sleep(0.1)
+                uart.write(bytes([0x45]))
+
+
+
+            # handle button presses while we're waiting for the next tempo beat
+            while time.monotonic() - stamp < 60/tempo:
+                # Check for pressed buttons
+                trellis.color(0,4,GOLD)
+
+                trellis.sync()
+
+                time.sleep(0.02)
+we will use the blink function to check the pressed buttons. 
+
+            def blink(xo,yo,edge):
+                if yo in range(4):
+                    if edge == NeoTrellis.EDGE_RISING
+                        beatset[yo][xo] = not beatset[yo][xo] # enable the voice
+                        if beatset[yo][xo]:
+                            color = DRUM_COLOR[yo]
+                        else:
+                            color = 0
+                        trellis.color(xo,yo,color)
+if the a rising edge is detected for the button, the beatset voice is now enbabled for that voice , and the color of that beat set is shown on the sequencer, else when you pressed again, the beatset voice is disabled, and the color is cleared. 
+
+                if xo == 0 and yo == 4:
+                        if edge == NeoTrellis.EDGE_RISING:
+                            data = open(ALONE1[0], "rb")
+                            wav = audiocore.WaveFile(data)
+                            mixer.voice[4].play(wav)
+                            trellis.color(xo,yo,CYAN)
+Also, we set the sample to play at the fifth channel of the mixer to not interupt with drum beat playing on the other channel
+
 
 ### Touble shooting
 In the original code, to make the drums to play at the same time, we use a mixer to play music in different channels. However, the sound samples in mixer are strictly required which means we may not use the sound files which is in different format, so we can only use the 16bit 2 channel 21600 sample rate WAV files instead of a MP3 files which we used in launchpad mode. 
