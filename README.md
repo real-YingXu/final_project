@@ -812,6 +812,7 @@ In our project, since it is highly delay sensitive,we want to reduce the impact 
 ![b4d3f8c57b2ebc1fb6571b78e7154eb](https://user-images.githubusercontent.com/114200453/210097103-2e5e9239-df1a-4d61-9417-1d587618f48e.png)
 
 ### Development process
+
 #### Stage 1
 Firstly, we try to use PIO_UART to both send and write data on the same RP2040 board with TX and RX port connected together:
 ```
