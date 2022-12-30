@@ -53,10 +53,10 @@ This program is mainly written with C and circuitpython, where C is controlling 
 
 ### Development environment
 Visual Studio Code Version: 1.74.2
-Test on: MacBook Pro (14-inch, 2021)
-    
-    Software: macOS Monterey 12.6
+    Tested on: Thinkpad X1, Windows 10 Pro, Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz   2.11 GHz
+
 MU circuitpython editor Version: 1.1.1
+    Tested on: DELL XPS13, Windows 10
 
 ## Soldering and case assambling 
 
