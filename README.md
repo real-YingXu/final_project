@@ -206,7 +206,7 @@ def cross(x,y,color):
         trellis.color(x+1,y,OFF)
         trellis.color(x-1,y,OFF)
 ```
-light7
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_7.gif?raw=true)
 
 ```
 def rainbow(x,y,color):
@@ -426,6 +426,7 @@ def loveloop(x,y):
 
 ```
 end
+![](https://github.com/MaxMa6150/final_project/blob/main/light/end.gif?raw=true)
 ```
 
 def cloud(x,y,color):
@@ -436,7 +437,7 @@ def cloud(x,y,color):
         for x in range(8):
             trellis.color(x,y,OFF)
 ```
-light8
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_8.gif?raw=true)
 ```
 
 def cloud_edit(x,y,color):
@@ -485,6 +486,8 @@ if x == 4 and y == 3:
 else:
     love(x,y,color)
 ```
+![](https://github.com/MaxMa6150/final_project/blob/main/light/light_9.gif?raw=true)
+
 ### Trouble shooting
 During the light progarm testing, we found an issue that since the light function is playing with the music playing, the speed of music playing the the light show playing will be affected when they play together, and the user can not interact with the buttons when the light is playing. Our guess is that the I2C bus is taking too much data from the borad, and it has reach its limit transmitssion speed, so in order to speed up the I2C transmission speed, we change the I2C frequency from 0.1Mhz to 0.4Mhz, and it significantly increased the speed of light functions. 
 
