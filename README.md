@@ -797,8 +797,9 @@ Programmable I/O (PIO) is a new piece of hardware developed for RP2040. The focu
 There are two PIO blocks with four state machines each, that can independently execute sequential programs to manipulate GPIOs and transfer data. Unlike a general-purpose processor, PIO state machines are highly specialized for IO, with a focus on determinism, precise timing, and close integration with fixed-function hardware. Each state machine and its supporting hardware occupy approximately the same silicon area as a standard serial interface block, such as an SPI or I2C controller.
 
 In our project, since it is highly delay sensitive,we want to reduce the impact of latency on results. So we used PIO_UART to replace the traditional UART protocol. 
-
-1. Firstly, we try to use PIO_UART to both send and write data on the same RP2040 board with TX and RX port connected together:
+### Development process
+#### Stage 1
+Firstly, we try to use PIO_UART to both send and write data on the same RP2040 board with TX and RX port connected together:
 ```
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
@@ -867,7 +868,7 @@ const uint SERIAL_BAUD = 115200;
  ```
  uart_tx_program_puts(pio0, 0, "hello");
  ```
- **Note: for rx reading data, the uart_rx_program_getc() function only reads one character at a time, hence when we are sending "hello" that is 5 characters, hence we need to put a for loop for reading like follows**
+ **Note: for rx reading data, the ```uart_rx_program_getc()``` function only reads one character at a time, hence when we are sending "hello" that is 5 characters, hence we need to put a for loop for reading like follows**
  
  ```
  char c[5];
@@ -879,7 +880,105 @@ const uint SERIAL_BAUD = 115200;
  ```
  
  
-2. Then we tried to read the data sent from one RP2040 TX port with circuitpython control at second RP2040 board RX port:
+#### Stage 2
+Then we tried to read the data sent from one RP2040 TX port with circuitpython control at second RP2040 board RX port:
+circuitpython code:
+```
+import busio
+import board
+import time
+
+uart = busio.UART(board.TX, board.RX, baudrate=9600)
+
+while True:
+    uart.write(bytes([0x60]))
+    print("test???????????????")
+    time.sleep(2)
+    uart.write(bytes([0x55]))
+    print("test---------------")
+    time.sleep(2)
+    
+```
+After first RP2040 send byte input and second board read the data, the data will be print at both board. The demo is shown below:
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/114200453/210075105-dbdf75aa-e74c-4ed4-af15-e6f969e5d8ff.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/114200453/210075149-2147d70e-271f-4d1a-bf8a-9ce7ada9c7b9.gif)
+From the result above, we found that with different speed, the delay does not matter. So PIO_UART is a good choice for delay reduction.
+
+**Trouble shooting:**
+1. Different from C language, ```uart.write()``` function only allows bytes input. But it does not really matter in our case since ```uart_rx_program_getc()``` function also only reads one character at a time. So in our final design, we make circuitpython board send a letter to C when we want the new LCD information display. Each byte input from circuitpython can be converted to a letter due to ASCII.
+2. **Important!** Both board should connected to the same PC when UART is running. We firstly tried to connect two board to different PCs, and no output is printed in console.
+
+#### Final stage
+Finally, we modify both python and c code to use PIO_UART in our project. Firstly, we use switching case in the main function to show which mode the user is in.
+1. Game initial
+When the user initialize(turn on) the pad, it will send a letter 's' to Pico4ML. After Pico4ML received the letter, it will in initialize mode
+```
+case 's':
+                game_init();
+                break;
+```
+The LCD will display adafruit symbol and "Lauch Pad Music Game" on the screen. With '1' to '5' sent to Pico4ML, phrase with different color will be shown on the screen.
+```
+void game_init(){
+     ST7735_FillScreen(ST7735_BLACK);
+     while (true){
+        char c = uart_rx_program_getc(pio1,0);
+        putchar(c);
+        if (c == '1'){
+            ST7735_WriteString(7, 20, "LAUNCH", Font_11x18, ST7735_BLACK, ST7735_CYAN);
+        }
+        else if (c == '2'){
+            ST7735_WriteString(23, 45, "PAD", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+        }
+        else if (c == '3'){
+            ST7735_WriteString(12, 70, "MUSIC", Font_11x18, ST7735_BLACK, ST7735_YELLOW);
+        }
+        else if (c == '4'){
+            ST7735_WriteString(12, 95, "GAME!", Font_11x18, ST7735_BLACK, ST7735_RED);
+        }
+        else if (c == '5'){
+            ST7735_FillScreen(ST7735_GREEN);
+            break;
+        }
+     }
+```
+2. Sequencer mode
+When the user choose the sequencer mode, it will send a letter 'S' to Pico4ML. After Pico4ML received the letter, it will in sequencer mode and show "Drum Mode" on LCD.
+```
+case 'S':
+                ST7735_WriteString(18, 30, "Drum", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(18, 60, "Mode", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                sleep_ms(1000);
+                ST7735_FillScreen(ST7735_GREEN);
+```
+![S_start_LCD](https://user-images.githubusercontent.com/114200453/210077245-2872c396-aefd-48f0-bbe2-164b1fd8be3f.png)
+During the sequencer mode, QTPY2040 will continuous send 
+
+3. Launchpad mode
+When the user choose , it will send a letter 's' to Pico4ML. After Pico4ML received the letter, it will in Lauchpad mode. 
+```
+case 'L':
+                ST7735_WriteString(12, 30, "Music", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                ST7735_WriteString(18, 60, "Mode", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                sleep_ms(500);
+                ST7735_WriteString(7, 90, "Enjoy!", Font_11x18, ST7735_RED, ST7735_GREEN);
+```
+![L_start_LCD](https://user-images.githubusercontent.com/114200453/210077217-96ba8cfd-309e-4a02-a4c5-d6a80441f42e.png)
+
+When the user press the last button on keypad, the mode will end and QTPY 2040 will send a letter 'E' to Pico4ML indicating there is an ending
+```
+char end = uart_rx_program_getc(pio1,0);
+                if (end == 'E'){
+                    ST7735_FillScreen(ST7735_GREEN);
+                    ST7735_WriteString(7, 20, "Thanks", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                    ST7735_WriteString(23, 50, "For", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                    ST7735_WriteString(2, 80, "Playing", Font_11x18, ST7735_BLACK, ST7735_GREEN);
+                    break;
+                }
+```
+![L_end_LCD](https://user-images.githubusercontent.com/114200453/210077275-3872647d-7e32-49cf-91d2-f6af52446fc7.png)
+
+
 
 
 ## Final stage 
@@ -921,8 +1020,7 @@ One of the most interesting feature we have accomplished is the 8 step sequencer
 
 The second part which is really exciting is to make a LCD display based on URAT data transmission. By using PIO, the delay of the two board data transmisson is minized. Also, by using URAT to transport data, it will solve the problem that the I2C bus is loading too musch data at the same time, so it is very practical in the future study. 
 
-# PIO explaination
-# 
+
 
 
 
